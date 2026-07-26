@@ -177,11 +177,17 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=coolify"
-      - "traefik.http.routers.frontend.rule=Host(`${DEPLOY_DOMAIN}`)"
-      - "traefik.http.routers.frontend.priority=1"
-      - "traefik.http.routers.frontend.entrypoints=websecure"
-      - "traefik.http.routers.frontend.tls.certresolver=letsencrypt"
-      - "traefik.http.services.frontend.loadbalancer.server.port=80"
+      # Router/service names are scoped to this project (mission-radar) —
+      # Traefik's Docker provider keys routers/services by this literal
+      # label name across ALL containers on the instance. Reusing a generic
+      # name like "frontend" here collided with ai-evaluation-lab's router
+      # of the same name, causing requests to be load-balanced at random
+      # between the two projects' containers.
+      - "traefik.http.routers.mission-radar-frontend.rule=Host(`${DEPLOY_DOMAIN}`)"
+      - "traefik.http.routers.mission-radar-frontend.priority=1"
+      - "traefik.http.routers.mission-radar-frontend.entrypoints=websecure"
+      - "traefik.http.routers.mission-radar-frontend.tls.certresolver=letsencrypt"
+      - "traefik.http.services.mission-radar-frontend.loadbalancer.server.port=80"
 
 networks:
   app-network:

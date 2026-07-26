@@ -1,20 +1,16 @@
 """Integration tests for _run_refresh() — real PostgreSQL, mocked external gateways."""
 from unittest.mock import AsyncMock, MagicMock, patch
-from uuid import uuid4
 
 import pytest
 
-from unittest.mock import MagicMock
 
 from src.Application.Exception.application_error import PipelineAlreadyRunningError
 from src.Application.UseCase.start_mission_refresh import StartMissionRefresh
 from src.Domain.Entity.pipeline_run import PipelineRun
-from src.Domain.Entity.user_profile import UserProfile
 from src.Domain.ValueObject.pipeline_enums import (
     PipelineStatus,
     PipelineStep,
     PipelineTrigger,
-    PipelineType,
     StepOutcome,
 )
 from src.Infrastructure.Config.database import AsyncSessionLocal

@@ -5,10 +5,9 @@ from uuid import UUID, uuid4
 
 import pytest
 
-from src.Application.DTO.analyze_raw_post_result import AnalyzeRawPostResult
 from src.Domain.ValueObject.post_analysis import PostAnalysis
 from src.Infrastructure.External.LLM.exceptions import LLMExtractionError
-from src.Infrastructure.Worker.tasks.analyze_post_task import _analyze, analyze_post_task
+from src.Infrastructure.Worker.tasks.analyze_post_task import _analyze
 
 
 # ---------------------------------------------------------------------------
@@ -175,9 +174,6 @@ async def test_not_job_offer_returns_skipped() -> None:
 @pytest.mark.asyncio
 async def test_analyzed_successfully_returns_analyzed_post_id() -> None:
     """Post offre valide → status='analyzed', analyzed_post_id présent."""
-    from src.Domain.Entity.analyzed_post import AnalyzedPost
-    from src.Domain.ValueObject.contract_type import ContractType
-    from src.Domain.ValueObject.remote_mode import RemoteMode
 
     raw_post = FakeRawPost()
     fake_raw_repo = _make_raw_post_repo(raw_post)

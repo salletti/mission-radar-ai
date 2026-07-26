@@ -8,10 +8,7 @@ from sqlalchemy import text
 from src.Domain.Entity.pipeline_run import PipelineRun
 from src.Domain.Entity.search_query import SearchQuery
 from src.Domain.Entity.user_profile import UserProfile
-from src.Domain.ValueObject.contract_type import ContractType
 from src.Domain.ValueObject.pipeline_enums import PipelineStatus, PipelineStep, PipelineTrigger, PipelineType
-from src.Domain.ValueObject.remote_mode import RemoteMode
-from src.Domain.ValueObject.stack import Stack
 from src.Infrastructure.Config.database import AsyncSessionLocal
 from src.Infrastructure.Persistence.Repository.pipeline_run_repository import SqlAlchemyPipelineRunRepository
 from src.Infrastructure.Persistence.Repository.search_query_repository import SqlAlchemySearchQueryRepository

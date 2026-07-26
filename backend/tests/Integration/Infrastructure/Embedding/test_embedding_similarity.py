@@ -3,7 +3,6 @@
 Uses the real model — validates that semantic similarity actually works
 as expected on job-domain phrases. No database required.
 """
-import pytest
 
 from src.Infrastructure.External.Embedding.sentence_transformer_embedding_gateway import (
     SentenceTransformerEmbeddingGateway,

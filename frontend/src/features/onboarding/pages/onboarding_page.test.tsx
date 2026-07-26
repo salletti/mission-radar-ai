@@ -148,7 +148,9 @@ describe("OnboardingPage", () => {
       profile_id: "test-uuid-123",
       email: "john@example.com",
       status: "created",
+      search_queries: ["python freelance paris"],
     });
+    vi.mocked(api.updateSearchQueries).mockResolvedValue(undefined);
 
     renderPage();
     await uploadValidCv(user);
@@ -158,6 +160,12 @@ describe("OnboardingPage", () => {
     });
 
     await user.click(screen.getByText("Confirm Profile"));
+
+    await waitFor(() => {
+      expect(screen.getByText("Save & Go to Dashboard")).toBeInTheDocument();
+    });
+
+    await user.click(screen.getByText("Save & Go to Dashboard"));
 
     await waitFor(() => {
       expect(mockNavigate).toHaveBeenCalledWith("/dashboard");

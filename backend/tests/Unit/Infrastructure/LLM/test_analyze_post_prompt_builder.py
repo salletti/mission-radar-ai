@@ -1,7 +1,6 @@
 """Unit tests for analyze_post_prompt_builder — pure function, no I/O."""
 from datetime import datetime, timezone
 
-import pytest
 
 from src.Domain.Entity.raw_post import RawPost
 from src.Infrastructure.External.LLM.analyze_post_prompt_builder import (

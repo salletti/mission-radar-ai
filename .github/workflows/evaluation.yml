@@ -1,0 +1,28 @@
+name: Evaluation
+
+# Déclenchement manuel uniquement — jamais sur push/PR. Fait un seul vrai
+# appel LLM (Groq) pour valider le câblage DeepEvalAdapter de bout en bout.
+# Nécessite le secret GROQ_API_KEY (Settings > Secrets and variables > Actions).
+on:
+  workflow_dispatch:
+
+jobs:
+  deepeval-smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: |
+            backend/requirements/base.txt
+            evaluation/requirements.txt
+      - name: Install dependencies
+        run: |
+          pip install -r backend/requirements/base.txt
+          pip install -r evaluation/requirements.txt
+      - name: Run DeepEval smoke test (1 real Groq call)
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python evaluation/scripts/smoke_test_deepeval.py

@@ -2,7 +2,6 @@
 from datetime import datetime, timezone
 from uuid import uuid4
 
-import pytest
 
 from src.Domain.Entity.user_profile import UserProfile
 from src.Domain.Service.heuristic_search_query_generator import HeuristicSearchQueryGenerator, _MAX_QUERIES

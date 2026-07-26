@@ -2,7 +2,6 @@
 from datetime import datetime, timezone
 from uuid import uuid4
 
-import pytest
 
 from src.Domain.Entity.mission_match import MissionMatch
 from src.Domain.Service.digest_mission_selector import DigestMissionSelector, TOP_MISSIONS

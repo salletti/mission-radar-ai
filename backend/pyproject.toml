@@ -1,0 +1,9 @@
+[tool.ruff]
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
+# F821 (undefined name) is excluded: it false-positives on quoted forward-ref
+# type annotations used deliberately to avoid circular imports (SQLAlchemy
+# relationship() targets, Gateway return types resolved via a local import).
+ignore = ["F821"]

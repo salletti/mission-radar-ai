@@ -1,7 +1,6 @@
 """Unit tests for ProcessCV use case — no I/O, no DB, no external services."""
 from datetime import datetime, timezone
 
-import pytest
 
 from src.Application.DTO.cv_profile import CVProfile
 from src.Application.DTO.cv_profile_draft import CVProfileDraft

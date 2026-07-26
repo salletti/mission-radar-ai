@@ -3,7 +3,6 @@ from uuid import uuid4
 
 from src.Domain.Entity.digest_email import DigestEmail
 from src.Domain.ValueObject.digest_mission import DigestMission
-from src.Domain.ValueObject.remote_mode import RemoteMode
 
 
 _USER_ID = uuid4()

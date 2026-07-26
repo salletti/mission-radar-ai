@@ -4,14 +4,11 @@ from typing import Optional
 from unittest.mock import ANY, AsyncMock, MagicMock, patch
 from uuid import UUID, uuid4
 
-_QUERY_ID = str(uuid4())
-
 import pytest
 
-from src.Infrastructure.External.Apify.mock_apify_provider import MockApifyProvider
-from src.Infrastructure.External.Apify.real_apify_provider import RealApifyProvider
 from src.Infrastructure.Worker.tasks.collect_posts_task import _collect, collect_posts
 
+_QUERY_ID = str(uuid4())
 _NOW = datetime(2026, 6, 15, tzinfo=timezone.utc)
 
 

@@ -2,9 +2,8 @@
 import pytest
 from datetime import datetime, timezone
 from typing import Optional
-from uuid import UUID, uuid4
+from uuid import UUID
 
-from src.Application.DTO.analyze_raw_post_result import AnalyzeRawPostResult
 from src.Application.Gateway.embedding_gateway import EmbeddingGateway
 from src.Application.Gateway.llm_gateway import LLMGateway
 from src.Application.UseCase.analyze_raw_post import AnalyzeRawPost

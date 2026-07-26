@@ -243,7 +243,6 @@ async def _match_step(pipeline_run_id: UUID, user_id: UUID) -> None:
 
 async def _digest_step(pipeline_run_id: UUID, user_id: UUID) -> bool:
     from src.Domain.Entity.digest_history import DigestHistory, DigestStatus
-    from src.Infrastructure.External.Mailer.exceptions import MailerSendError
     from src.Infrastructure.Persistence.Repository.digest_history_repository import SqlAlchemyDigestHistoryRepository
 
     async with AsyncSessionLocal() as session:

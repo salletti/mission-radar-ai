@@ -29,7 +29,7 @@ export function useMissionRefresh() {
     const status = pollingQuery.data?.status;
     if (status === "completed") {
       const ts =
-        pollingQuery.data.finished_at ?? new Date().toISOString();
+        pollingQuery.data?.finished_at ?? new Date().toISOString();
       setLastSyncAt(ts);
       localStorage.setItem(syncKey, ts);
       localStorage.removeItem(runKey);

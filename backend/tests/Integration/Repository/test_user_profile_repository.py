@@ -2,7 +2,6 @@
 import pytest
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.Domain.ValueObject.contract_type import ContractType
 from src.Infrastructure.Persistence.exceptions import DatabaseError
 from src.Infrastructure.Persistence.Repository.user_profile_repository import SqlAlchemyUserProfileRepository
 from tests.Integration.Repository.conftest import make_user_profile

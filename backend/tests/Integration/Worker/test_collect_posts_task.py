@@ -1,5 +1,4 @@
 """Integration tests for _collect() — MockApifyProvider + real PostgreSQL."""
-from uuid import uuid4
 
 import pytest
 from unittest.mock import patch

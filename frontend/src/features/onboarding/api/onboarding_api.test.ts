@@ -23,7 +23,7 @@ describe("uploadCv", () => {
   });
 
   it("returns parsed response on success", async () => {
-    global.fetch = vi.fn().mockResolvedValue({
+    globalThis.fetch = vi.fn().mockResolvedValue({
       ok: true,
       json: () => Promise.resolve(mockDraftResponse),
     } as Response);
@@ -34,7 +34,7 @@ describe("uploadCv", () => {
     expect(result).toEqual(mockDraftResponse);
 
     const [url, options] = (
-      global.fetch as ReturnType<typeof vi.fn>
+      globalThis.fetch as ReturnType<typeof vi.fn>
     ).mock.calls[0] as [string, RequestInit];
     expect(url).toBe("/api/onboarding/cv");
     expect(options.method).toBe("POST");
@@ -42,7 +42,7 @@ describe("uploadCv", () => {
   });
 
   it("throws error with detail message on API failure", async () => {
-    global.fetch = vi.fn().mockResolvedValue({
+    globalThis.fetch = vi.fn().mockResolvedValue({
       ok: false,
       json: () =>
         Promise.resolve({ detail: "Only PDF files are accepted" }),
@@ -55,7 +55,7 @@ describe("uploadCv", () => {
   });
 
   it("throws status-based error when response body is not JSON", async () => {
-    global.fetch = vi.fn().mockResolvedValue({
+    globalThis.fetch = vi.fn().mockResolvedValue({
       ok: false,
       status: 502,
       json: () => Promise.reject(new Error("not json")),

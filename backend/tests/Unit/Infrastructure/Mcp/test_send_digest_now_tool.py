@@ -22,7 +22,6 @@ from src.Domain.Repository.user_profile_repository import UserProfileRepository
 from src.Domain.Service.digest_generator import DigestGenerator
 from src.Domain.Service.digest_mission_selector import DigestMissionSelector
 from src.Domain.ValueObject.contract_type import ContractType
-from src.Domain.ValueObject.match_score import MatchScore
 from src.Domain.ValueObject.remote_mode import RemoteMode
 from src.Domain.ValueObject.stack import Stack
 from src.Infrastructure.Mcp.Identity.identity_resolver import IdentityResolver

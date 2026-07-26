@@ -12,7 +12,6 @@ from src.Application.UseCase.match_missions import MatchMissions
 from src.Domain.Entity.search_query import SearchQuery
 from src.Domain.Entity.search_query_raw_post import SearchQueryRawPost
 from src.Domain.Service.mission_match_scorer import MissionMatchScorer
-from src.Domain.ValueObject.match_score import MatchScore
 from src.Infrastructure.Config.database import AsyncSessionLocal
 from src.Infrastructure.Persistence.Repository.analyzed_post_repository import (
     SqlAlchemyAnalyzedPostRepository,

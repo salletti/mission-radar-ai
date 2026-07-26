@@ -3,7 +3,6 @@ from datetime import datetime, timezone
 from typing import Optional, Union
 from uuid import UUID, uuid4
 
-import pytest
 
 from src.Application.DTO.cv_profile import CVProfile
 from src.Application.DTO.save_profile_command import SaveProfileCommand

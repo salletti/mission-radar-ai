@@ -27,7 +27,14 @@ const mockMission: MissionDetail = {
   matched_at: "2026-06-28T10:00:00Z",
   matched_skills: ["python"],
   missing_skills: [],
-  explainability_hints: [],
+  explanation: {
+    score_breakdown: { skills: 0.9, experience: 0.8, location: 1.0, contract: 1.0, daily_rate: 0.75 },
+    matching_reasons: ["Stack Python correspond au profil"],
+    warnings: [],
+    strong_points: ["Expérience Python"],
+    missing_skills: [],
+    recommendations: [],
+  },
 };
 
 describe("MissionScoreCard", () => {

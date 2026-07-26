@@ -2,7 +2,6 @@
 from datetime import datetime, timezone
 from uuid import uuid4
 
-import pytest
 
 from src.Domain.Entity.digest_email import DigestEmail
 from src.Domain.Entity.user_profile import UserProfile

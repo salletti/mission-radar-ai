@@ -1,5 +1,4 @@
 """Unit tests for DigestPolicy — no I/O, no DB, no external services."""
-import pytest
 
 from src.Domain.Service.digest_policy import DigestPolicy
 from src.Domain.ValueObject.pipeline_enums import PipelineTrigger

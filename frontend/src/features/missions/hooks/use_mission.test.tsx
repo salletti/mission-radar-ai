@@ -33,7 +33,14 @@ const mockDetail: MissionDetail = {
   matched_at: "2026-06-28T10:00:00Z",
   matched_skills: ["python", "fastapi"],
   missing_skills: ["kubernetes"],
-  explainability_hints: ["Votre expérience python correspond à la stack demandée."],
+  explanation: {
+    score_breakdown: { skills: 0.9, experience: 0.8, location: 1.0, contract: 1.0, daily_rate: 0.7 },
+    matching_reasons: ["Votre expérience python correspond à la stack demandée."],
+    warnings: [],
+    strong_points: ["Expérience Python"],
+    missing_skills: ["kubernetes"],
+    recommendations: [],
+  },
 };
 
 function createWrapper(profileId: string | null = "test-profile-uuid") {

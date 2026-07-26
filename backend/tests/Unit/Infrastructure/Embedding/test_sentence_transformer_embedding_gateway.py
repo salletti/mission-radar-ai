@@ -3,7 +3,6 @@
 Uses the real SentenceTransformer model — the gateway IS the I/O boundary.
 No mocking of the model; this follows the same pattern as test_pdfminer_cv_extractor_gateway.py.
 """
-import pytest
 
 from src.Infrastructure.External.Embedding.sentence_transformer_embedding_gateway import (
     SentenceTransformerEmbeddingGateway,

@@ -17,6 +17,9 @@ class Settings(BaseSettings):
     REDIS_HOST: str = "redis"
     REDIS_PORT: int = 6379
 
+    # Intervalle entre deux exécutions du pipeline de collecte/analyse/digest (Celery Beat)
+    DISPATCH_INTERVAL_HOURS: float = 24.0
+
     GROQ_API_KEY: str = ""
     LLM_PROVIDER: str = "groq"  # groq | claude
     APIFY_API_TOKEN: str = ""

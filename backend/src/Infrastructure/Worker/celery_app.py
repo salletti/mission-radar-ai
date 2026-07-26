@@ -1,5 +1,4 @@
 from celery import Celery
-from celery.schedules import crontab
 
 from src.Infrastructure.Config.settings import settings
 
@@ -32,12 +31,11 @@ celery_app.conf.beat_scheduler = (
     "src.Infrastructure.Worker.scheduler.collection_scheduler:DynamicCollectionScheduler"
 )
 
-# Dev : toutes les 5 minutes (itération rapide) | Prod : une fois par jour à 7h00 UTC
-_DISPATCH_SCHEDULE = crontab(hour=7, minute=0) if settings.APP_ENV == "production" else 300.0
-
+# Intervalle piloté par DISPATCH_INTERVAL_HOURS (défaut 24h) — voir settings.py.
+# Ex. dev : 0.0833 (5 min) pour itérer vite ; prod : 24 (défaut) ou toute autre valeur.
 celery_app.conf.beat_schedule = {
     "dispatch-collection": {
         "task": "dispatch-collection",  # marqueur intercepté par DynamicCollectionScheduler
-        "schedule": _DISPATCH_SCHEDULE,
+        "schedule": settings.DISPATCH_INTERVAL_HOURS * 3600.0,
     }
 }

@@ -1,5 +1,6 @@
 x-backend-env: &backend-env
   PYTHONUNBUFFERED: "1"
+  DISPATCH_INTERVAL_HOURS: "0.0833"  # ~5 minutes, pour itérer vite en dev — prod garde le défaut (24h)
   DATABASE_URL: postgresql+asyncpg://mission_radar:mission_radar@postgres:5432/mission_radar
   RABBITMQ_HOST: rabbitmq
   RABBITMQ_PORT: "5672"

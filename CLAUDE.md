@@ -26,6 +26,7 @@ PDF            : pdfminer.six
 Observabilité  : Langfuse
 Évaluation AI  : DeepEval + GitHub Actions
 MCP            : FastMCP (V3)
+Auth           : Auth0 (JWT/OAuth2 — REST + MCP, Phase 10.4)
 Frontend       : React + Vite + TypeScript + react-query + recharts
 Email          : Jinja2 + Resend
 ```
@@ -37,37 +38,42 @@ mission-radar-ai/
 ├── backend/
 │   ├── src/
 │   │   ├── Domain/
-│   │   │   ├── Entity/          # UserProfile, RawPost, AnalyzedPost, Mission, MissionFeedback
-│   │   │   ├── ValueObject/     # TJM, Stack, ContractType, MatchScore, ConfidenceScore
+│   │   │   ├── Entity/          # UserProfile, RawPost, AnalyzedPost, MissionMatch, PipelineRun...
+│   │   │   ├── ValueObject/     # TJM, Stack, ContractType, MatchScore, PostAnalysis, DigestMission...
 │   │   │   ├── Repository/      # interfaces abstraites (ABC)
-│   │   │   ├── Service/         # logique métier pure, sans I/O
+│   │   │   ├── Service/         # logique métier pure, sans I/O (scoring, normalisation, digest...)
 │   │   │   └── Exception/       # exceptions domaine
 │   │   ├── Application/
-│   │   │   ├── UseCase/         # ProcessCV, MatchMissions, GenerateDigest, RecalibrateWeights
-│   │   │   ├── Command/         # ScrapeLinkedInCommand, AnalyzePostCommand, SendDigestCommand
-│   │   │   ├── Query/           # GetTodayMissionsQuery, SearchMissionsQuery, GetProfileQuery
-│   │   │   ├── DTO/             # CVProfileDTO, MissionDTO, MatchResultDTO, FeedbackDTO
-│   │   │   └── Gateway/         # ABC : LLMProvider, ScraperGateway, MailerGateway, EmbeddingGateway, ObservabilityGateway
+│   │   │   ├── UseCase/         # ProcessCV, MatchMissions, GenerateDigest, StartMissionRefresh...
+│   │   │   ├── DTO/             # Command/Query/Result DTO — pas de dossiers Command/ ou Query/ séparés
+│   │   │   ├── Gateway/         # ABC : LLMGateway, ScraperGateway, MailerGateway, EmbeddingGateway, TokenVerifierGateway...
+│   │   │   └── Exception/       # exceptions applicatives
 │   │   └── Infrastructure/
+│   │       ├── Api/
+│   │       │   ├── Controller/  # routers FastAPI + schemas Pydantic inline
+│   │       │   └── Dependency/  # FastAPI Depends() — assemblage des dépendances
+│   │       ├── Commands/        # CLI (collect_posts, analyze_post, match_missions...)
+│   │       ├── Config/          # Settings (pydantic-settings), connexion base de données
+│   │       ├── External/
+│   │       │   ├── Apify/       # ApifyScraperGateway + fixtures JSON mock
+│   │       │   ├── Auth0/       # Auth0TokenVerifierGateway
+│   │       │   ├── CV/          # PdfMinerCVExtractorGateway
+│   │       │   ├── Embedding/   # SentenceTransformerEmbeddingGateway
+│   │       │   ├── LLM/         # GroqLLMGateway (ClaudeProvider prévu)
+│   │       │   ├── Mailer/      # ResendMailerGateway + templates Jinja2
+│   │       │   └── Observability/ # LangfuseTracer / NullTracer
+│   │       ├── Mcp/             # Serveur MCP (FastMCP) — Resources, Tools, Prompts, Identity, Transport
+│   │       ├── Messaging/       # Clients RabbitMQ, Redis
 │   │       ├── Persistence/
 │   │       │   ├── SQLAlchemy/  # modèles ORM
-│   │       │   └── Repository/  # implémentations concrètes
-│   │       ├── Api/
-│   │       │   └── Controller/  # routers FastAPI + schemas Pydantic inline
-│   │       ├── External/
-│   │       │   ├── Apify/       # ApifyClient avec retry/backoff
-│   │       │   ├── LLM/         # GroqProvider, ClaudeProvider
-│   │       │   ├── Mailer/      # ResendMailer
-│   │       │   └── Observability/ # LangfuseClient
-│   │       └── Worker/          # Celery tasks
-│   │           ├── scraping_task.py
-│   │           ├── analysis_task.py
-│   │           ├── digest_task.py
-│   │           └── recalibration_task.py
+│   │       │   ├── Mapper/      # Domain ↔ SQLAlchemy
+│   │       │   ├── Repository/  # implémentations concrètes
+│   │       │   └── Seeds/       # données de démo
+│   │       └── Worker/          # Celery — tasks/, scheduler/, dispatchers/
 │   ├── tests/
-│   │   ├── Unit/
+│   │   ├── Unit/                # miroir exact de src/ — aucun mock I/O
 │   │   ├── Integration/
-│   │   └── Fixtures/            # JSON Apify mockés — utiliser en dev, pas l'API réelle
+│   │   └── Fixtures/            # JSON Apify mockés (données 100% fictives) + CV PDF de test
 │   ├── alembic/
 │   ├── alembic.ini
 │   ├── requirements/
@@ -76,14 +82,18 @@ mission-radar-ai/
 │   └── Dockerfile
 ├── frontend/
 │   ├── src/
-│   │   ├── components/
-│   │   ├── pages/               # Dashboard, Onboarding, Missions, Profile
-│   │   ├── services/            # appels API backend
-│   │   └── types/
+│   │   ├── api/                 # client HTTP
+│   │   ├── app/                 # providers (Auth0, react-query), router
+│   │   ├── context/
+│   │   ├── features/            # auth, dashboard, history, missions, onboarding, pipeline, summary
+│   │   └── shared/               # composants partagés (layouts...)
 │   ├── package.json
 │   ├── vite.config.ts
 │   └── Dockerfile
+├── evaluation/                  # Plateforme d'évaluation AI (DeepEval, métriques, gold dataset) — hors Domain/Application
+├── docs/                        # Documentation détaillée (PHASES.md, AUTH0_INTEGRATION.md)
 ├── docker-compose.yml
+├── LICENSE
 └── README.md
 ```
 

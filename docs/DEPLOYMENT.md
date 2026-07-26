@@ -38,8 +38,9 @@ via ce proxy nginx, donc le FastAPI backend n'a jamais besoin d'autoriser une or
   partagent la même image et démarrent en parallèle (`depends_on` ne garantit pas d'ordre entre
   eux) ; faire tourner `alembic upgrade head` dans l'entrypoint de chacun créerait une course.
   À la place, `backend/scripts/init_production.sh` se lance à la main après le déploiement
-  (une fois, puis à chaque déploiement qui ajoute une migration) :
-  `docker compose -f docker-compose.prod.yml exec backend bash backend/scripts/init_production.sh`
+  (une fois, puis à chaque déploiement qui ajoute une migration) — depuis le terminal Coolify
+  du service `backend` (déjà dans le conteneur, `WORKDIR /app`) : `bash scripts/init_production.sh`,
+  ou depuis l'hôte : `docker compose -f docker-compose.prod.yml exec backend bash scripts/init_production.sh`
 - **Planification Celery Beat persistée** : le fichier de planification vit sur un volume nommé
   `celery_beat_data:/var/lib/celery` au lieu de `/tmp` (effacé à chaque redémarrage du
   conteneur en dev — sans conséquence en dev, mais aurait fait sauter le suivi des tâches dues
@@ -98,8 +99,9 @@ sur ce même Traefik/Coolify.
 5. Vérifier le DNS Cloudflare de `${DEPLOY_DOMAIN}` vers le VPS.
 6. Lancer le déploiement. Le premier démarrage du backend est plus lent (build inclut le
    pré-téléchargement du modèle d'embedding).
-7. Appliquer les migrations une fois les conteneurs up :
-   `docker compose -f docker-compose.prod.yml exec backend bash backend/scripts/init_production.sh`
+7. Appliquer les migrations une fois les conteneurs up — depuis le terminal Coolify du service
+   `backend` : `bash scripts/init_production.sh` (ou depuis l'hôte :
+   `docker compose -f docker-compose.prod.yml exec backend bash scripts/init_production.sh`)
 8. Vérifier :
    - `https://${DEPLOY_DOMAIN}/` (SPA)
    - `https://${DEPLOY_DOMAIN}/api/health` via le reverse-proxy interne nginx (Postgres/RabbitMQ/Redis)

@@ -1,0 +1,196 @@
+# Production compose file for Coolify.
+# No ports are published to the host — Traefik (managed by Coolify) reaches
+# the `frontend` service over the external `coolify` network via `expose` +
+# labels. Traefik has a single router for the whole domain; `frontend`'s
+# nginx internally reverse-proxies /api, /mcp, /docs and /openapi.json to the
+# `backend` service over `app-network` — see frontend/nginx.conf. postgres,
+# rabbitmq, redis, celery_worker and celery_beat are never reachable from
+# Traefik nor from the `coolify` network.
+
+x-backend-env: &backend-env
+  PYTHONUNBUFFERED: "1"
+  APP_ENV: production
+  DATABASE_URL: postgresql+asyncpg://mission_radar:${POSTGRES_PASSWORD}@postgres:5432/mission_radar
+  RABBITMQ_HOST: rabbitmq
+  RABBITMQ_PORT: "5672"
+  RABBITMQ_USER: ${RABBITMQ_USER}
+  RABBITMQ_PASSWORD: ${RABBITMQ_PASSWORD}
+  REDIS_HOST: redis
+  REDIS_PORT: "6379"
+  LLM_PROVIDER: ${LLM_PROVIDER:-groq}
+  GROQ_API_KEY: ${GROQ_API_KEY}
+  APIFY_API_TOKEN: ${APIFY_API_TOKEN}
+  APIFY_PROVIDER: ${APIFY_PROVIDER:-real}
+  RESEND_API_KEY: ${RESEND_API_KEY}
+  MAIL_FROM: ${MAIL_FROM}
+  MAIL_FROM_NAME: ${MAIL_FROM_NAME:-Mission Radar AI}
+  DIGEST_ENABLED: ${DIGEST_ENABLED:-true}
+  LANGFUSE_ENABLED: ${LANGFUSE_ENABLED:-true}
+  LANGFUSE_PUBLIC_KEY: ${LANGFUSE_PUBLIC_KEY}
+  LANGFUSE_SECRET_KEY: ${LANGFUSE_SECRET_KEY}
+  LANGFUSE_HOST: ${LANGFUSE_HOST:-https://cloud.langfuse.com}
+  AUTH0_DOMAIN: ${AUTH0_DOMAIN}
+  AUTH0_API_AUDIENCE: ${AUTH0_API_AUDIENCE}
+  AUTH0_MCP_AUDIENCE: ${AUTH0_MCP_AUDIENCE}
+  MCP_PROTECTED_RESOURCE_METADATA_URL: ${MCP_PROTECTED_RESOURCE_METADATA_URL}
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_DB: mission_radar
+      POSTGRES_USER: mission_radar
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    expose:
+      - "5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mission_radar -d mission_radar"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+    expose:
+      - "5672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+
+  redis:
+    image: redis:7
+    expose:
+      - "6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: docker/Dockerfile
+    expose:
+      - "8000"
+    environment:
+      <<: *backend-env
+    depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    networks:
+      - app-network
+
+  celery_worker:
+    build:
+      context: ./backend
+      dockerfile: docker/Dockerfile
+    command: celery -A src.Infrastructure.Worker.celery_app worker --loglevel=info -Q default
+    environment:
+      <<: *backend-env
+    depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  celery_beat:
+    build:
+      context: ./backend
+      dockerfile: docker/Dockerfile
+    # Schedule file lives on a named volume: /tmp is wiped on every container
+    # restart, which would otherwise reset Celery Beat's due-task bookkeeping.
+    command: celery -A src.Infrastructure.Worker.celery_app beat --loglevel=info --schedule=/var/lib/celery/celerybeat-schedule
+    environment:
+      <<: *backend-env
+    volumes:
+      - celery_beat_data:/var/lib/celery
+    depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_AUTH0_DOMAIN: ${AUTH0_DOMAIN}
+        VITE_AUTH0_CLIENT_ID: ${AUTH0_WEB_CLIENT_ID}
+        VITE_AUTH0_AUDIENCE: ${AUTH0_API_AUDIENCE}
+    expose:
+      - "80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1:80/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    networks:
+      - app-network
+      - coolify
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=coolify"
+      - "traefik.http.routers.frontend.rule=Host(`${DEPLOY_DOMAIN}`)"
+      - "traefik.http.routers.frontend.priority=1"
+      - "traefik.http.routers.frontend.entrypoints=websecure"
+      - "traefik.http.routers.frontend.tls.certresolver=letsencrypt"
+      - "traefik.http.services.frontend.loadbalancer.server.port=80"
+
+networks:
+  app-network:
+    internal: true
+  coolify:
+    external: true
+
+volumes:
+  postgres_data:
+  rabbitmq_data:
+  redis_data:
+  celery_beat_data:

@@ -1,0 +1,48 @@
+{% extends "layout.html.j2" %}
+{% block title %}{{ digest.subject }}{% endblock %}
+
+{% block content %}
+  {# Header #}
+  {% include "components/header.html.j2" %}
+
+  {# Missions #}
+  {% if digest.mission_count == 0 %}
+  <tr>
+    <td style="padding:32px 32px 8px;text-align:center;color:#6b7280;font-size:15px;">
+      Aucune nouvelle mission ne correspond à votre profil aujourd'hui.<br/>
+      Revenez demain — de nouvelles opportunités arrivent chaque jour.
+    </td>
+  </tr>
+  {% else %}
+  <tr>
+    <td style="padding:24px 32px 8px;">
+      <p style="margin:0 0 20px;font-size:14px;color:#6b7280;">
+        Voici vos
+        {% if digest.mission_count == 1 %}
+          meilleure mission
+        {% else %}
+          {{ digest.mission_count }} meilleures missions
+        {% endif %}
+        du jour, triées par score de correspondance.
+      </p>
+    </td>
+  </tr>
+  {% for mission in digest.missions %}
+    {% include "components/mission_card.html.j2" %}
+  {% endfor %}
+  {% endif %}
+
+  {# Dashboard CTA #}
+  <tr>
+    <td style="padding:16px 32px 24px;text-align:center;">
+      <a href="http://localhost:5173/dashboard"
+         style="display:inline-block;padding:12px 28px;background-color:#4f46e5;color:#ffffff;
+                text-decoration:none;border-radius:6px;font-size:14px;font-weight:bold;">
+        Voir toutes mes missions →
+      </a>
+    </td>
+  </tr>
+
+  {# Footer #}
+  {% include "components/footer.html.j2" %}
+{% endblock %}

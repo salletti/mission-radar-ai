@@ -1,0 +1,30 @@
+---
+name: replace-with-skill-name
+description: Describe what this skill does and the situations in which Claude should use it.
+---
+
+# Skill title
+
+## Goal
+
+State the concrete outcome this skill must produce.
+
+## Workflow
+
+1. Inspect the relevant project files before making changes.
+2. Read only the references required for the current task.
+3. Follow the project conventions defined in `CLAUDE.md`.
+4. Implement the requested change with focused tests.
+5. Report changed files, verification performed, and remaining risks.
+
+## Project constraints
+
+- Respect the dependency direction: `Domain/ <- Application/ <- Infrastructure/`.
+- Keep domain logic free of framework and I/O dependencies.
+- Reuse existing project patterns before adding abstractions.
+
+## Resources
+
+- Read `references/REFERENCE.md` when detailed domain or technical context is needed.
+- Use scripts from `scripts/` for repeatable or error-prone operations.
+- Use files from `assets/` as output templates; do not load them as instructions.

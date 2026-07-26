@@ -1,0 +1,124 @@
+x-backend-env: &backend-env
+  PYTHONUNBUFFERED: "1"
+  DATABASE_URL: postgresql+asyncpg://mission_radar:mission_radar@postgres:5432/mission_radar
+  RABBITMQ_HOST: rabbitmq
+  RABBITMQ_PORT: "5672"
+  RABBITMQ_USER: guest
+  RABBITMQ_PASSWORD: guest
+  REDIS_HOST: redis
+  REDIS_PORT: "6379"
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_DB: mission_radar
+      POSTGRES_USER: mission_radar
+      POSTGRES_PASSWORD: mission_radar
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mission_radar -d mission_radar"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - ./evaluation:/app/evaluation
+    env_file:
+      - path: ./.env
+        required: false
+    environment:
+      <<: *backend-env
+    depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  celery_worker:
+    build: ./backend
+    command: celery -A src.Infrastructure.Worker.celery_app worker --loglevel=info -Q default
+    volumes:
+      - ./backend:/app
+    env_file:
+      - path: ./.env
+        required: false
+    environment:
+      <<: *backend-env
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+
+  celery_beat:
+    build: ./backend
+    command: celery -A src.Infrastructure.Worker.celery_app beat --loglevel=info --schedule=/tmp/celerybeat-schedule
+    volumes:
+      - ./backend:/app
+    env_file:
+      - path: ./.env
+        required: false
+    environment:
+      <<: *backend-env
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      VITE_API_BASE_URL: "http://backend:8000"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+  rabbitmq_data:
+  redis_data:

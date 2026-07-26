@@ -1,0 +1,1442 @@
+[
+  {
+    "type": "post",
+    "id": "7471260034488832000",
+    "linkedinUrl": "https://www.linkedin.com/posts/david-roux_freelance-mission-tech-activity-7471260034488832000-0000",
+    "content": "Mission freelance Développeur Backend Python Senior — Paris / Full Remote\n\nTJM 700-750€/j — Démarrage ASAP — 6 mois renouvelables.\n\nStack : Python, FastAPI, PostgreSQL, Docker, Celery.\n\nContactez-moi en MP pour plus de détails.",
+    "contentAttributes": [],
+    "author": {
+      "id": "ACoAAAC3328AFE905F0E2D55380D3F15",
+      "universalName": null,
+      "publicIdentifier": "david-roux",
+      "type": "profile",
+      "name": "David Roux",
+      "linkedinUrl": "https://www.linkedin.com/in/david-roux?miniProfileUrn=urn%3Ali%3Afsd_profile%3AACoAAAC3328AFE905F0E2D55380D3F15",
+      "info": "Développeur freelance",
+      "website": null,
+      "websiteLabel": null,
+      "avatar": {
+        "url": "https://media.licdn.com/dms/image/v2/EXAMPLE/profile-framedphoto/c3328afe905f0e2d/0/1700000000000?e=1800000000&v=beta&t=example",
+        "width": 800,
+        "height": 800
+      },
+      "urn": "174869502"
+    },
+    "postedAt": {
+      "timestamp": 1780000000000,
+      "date": "2026-06-12T18:00:01.521Z",
+      "postedAgoShort": "1d",
+      "postedAgoText": "1 days ago • Visible to anyone on or off LinkedIn"
+    },
+    "postImages": [],
+    "postVideo": null,
+    "socialContent": {
+      "hideCommentsCount": false,
+      "hideReactionsCount": false,
+      "hideSocialActivityCounts": false,
+      "hideShareAction": true,
+      "hideSendAction": true,
+      "hideRepostsCount": false,
+      "hideViewsCount": false,
+      "trustInterventionBanner": null,
+      "hideReactAction": false,
+      "hideCommentAction": false,
+      "shareUrl": "https://www.linkedin.com/posts/david-roux_freelance-mission-tech-activity-7471260034488832000-0000?",
+      "showContributionExperience": false,
+      "showSocialDetail": true
+    },
+    "header": {
+      "text": null
+    },
+    "entityId": "7471260034488832000",
+    "shareUrn": "urn:li:share:7471260034488830766",
+    "shareLinkedinUrl": "https://www.linkedin.com/feed/update/urn:li:share:7471260034488830766",
+    "engagement": {
+      "id": "7471260034488832000",
+      "likes": 0,
+      "comments": 0,
+      "shares": 0,
+      "reactions": [
+        {
+          "type": "LIKE",
+          "count": 0
+        }
+      ]
+    },
+    "reactionIds": [],
+    "commentIds": [],
+    "query": {
+      "sortBy": "date",
+      "page": 1,
+      "search": "freelance paris"
+    }
+  },
+  {
+    "type": "post",
+    "id": "7471260034488832137",
+    "linkedinUrl": "https://www.linkedin.com/posts/benoit-robert_freelance-mission-tech-activity-7471260034488832137-0001",
+    "content": "Recherche Ingénieur Python / Data pour mission longue durée, hybride 2j sur site Lyon.\n\nTJM 600€/j — Stack : Python, Pandas, Airflow, AWS.\n\nFreelance ou portage accepté.",
+    "contentAttributes": [],
+    "author": {
+      "id": "ACoAAAFD7AD1579CC6E7CFA37B6EFF65",
+      "universalName": null,
+      "publicIdentifier": "benoit-robert",
+      "type": "profile",
+      "name": "Benoit Robert",
+      "linkedinUrl": "https://www.linkedin.com/in/benoit-robert?miniProfileUrn=urn%3Ali%3Afsd_profile%3AACoAAAFD7AD1579CC6E7CFA37B6EFF65",
+      "info": "Développeuse freelance",
+      "website": null,
+      "websiteLabel": null,
+      "avatar": {
+        "url": "https://media.licdn.com/dms/image/v2/EXAMPLE/profile-framedphoto/fd7ad1579cc6e7cf/0/1700000000000?e=1800000000&v=beta&t=example",
+        "width": 800,
+        "height": 800
+      },
+      "urn": "352684631"
+    },
+    "postedAt": {
+      "timestamp": 1780000100000,
+      "date": "2026-06-02T09:00:00.000Z",
+      "postedAgoShort": "2d",
+      "postedAgoText": "2 days ago • Visible to anyone on or off LinkedIn"
+    },
+    "postImages": [],
+    "postVideo": null,
+    "socialContent": {
+      "hideCommentsCount": false,
+      "hideReactionsCount": false,
+      "hideSocialActivityCounts": false,
+      "hideShareAction": true,
+      "hideSendAction": true,
+      "hideRepostsCount": false,
+      "hideViewsCount": false,
+      "trustInterventionBanner": null,
+      "hideReactAction": false,
+      "hideCommentAction": false,
+      "shareUrl": "https://www.linkedin.com/posts/benoit-robert_freelance-mission-tech-activity-7471260034488832137-0001?",
+      "showContributionExperience": false,
+      "showSocialDetail": true
+    },
+    "header": {
+      "text": null
+    },
+    "entityId": "7471260034488832137",
+    "shareUrn": "urn:li:share:7471260034488830903",
+    "shareLinkedinUrl": "https://www.linkedin.com/feed/update/urn:li:share:7471260034488830903",
+    "engagement": {
+      "id": "7471260034488832137",
+      "likes": 7,
+      "comments": 1,
+      "shares": 1,
+      "reactions": [
+        {
+          "type": "LIKE",
+          "count": 3
+        }
+      ]
+    },
+    "reactionIds": [],
+    "commentIds": [],
+    "query": {
+      "sortBy": "date",
+      "page": 1,
+      "search": "freelance paris"
+    }
+  },
+  {
+    "type": "post",
+    "id": "7471260034488832274",
+    "linkedinUrl": "https://www.linkedin.com/posts/camille-leroy_freelance-mission-tech-activity-7471260034488832274-0002",
+    "content": "🚀 Offre CDI — Lead Python Developer, Bordeaux, télétravail partiel.\n\nStack Django/PostgreSQL, équipe de 6 devs, méthodologie agile.",
+    "contentAttributes": [],
+    "author": {
+      "id": "ACoAAA1F6E911E46D06DA7CC512CE4E9",
+      "universalName": null,
+      "publicIdentifier": "camille-leroy",
+      "type": "profile",
+      "name": "Camille Leroy",
+      "linkedinUrl": "https://www.linkedin.com/in/camille-leroy?miniProfileUrn=urn%3Ali%3Afsd_profile%3AACoAAA1F6E911E46D06DA7CC512CE4E9",
+      "info": "Lead Developer freelance",
+      "website": null,
+      "websiteLabel": null,
+      "avatar": {
+        "url": "https://media.licdn.com/dms/image/v2/EXAMPLE/profile-framedphoto/1f6e911e46d06da7/0/1700000000000?e=1800000000&v=beta&t=example",
+        "width": 800,
+        "height": 800
+      },
+      "urn": "627339806"
+    },
+    "postedAt": {
+      "timestamp": 1780000200000,
+      "date": "2026-06-03T10:00:00.000Z",
+      "postedAgoShort": "3d",
+      "postedAgoText": "3 days ago • Visible to anyone on or off LinkedIn"
+    },
+    "postImages": [],
+    "postVideo": null,
+    "socialContent": {
+      "hideCommentsCount": false,
+      "hideReactionsCount": false,
+      "hideSocialActivityCounts": false,
+      "hideShareAction": true,
+      "hideSendAction": true,
+      "hideRepostsCount": false,
+      "hideViewsCount": false,
+      "trustInterventionBanner": null,
+      "hideReactAction": false,
+      "hideCommentAction": false,
+      "shareUrl": "https://www.linkedin.com/posts/camille-leroy_freelance-mission-tech-activity-7471260034488832274-0002?",
+      "showContributionExperience": false,
+      "showSocialDetail": true
+    },
+    "header": {
+      "text": null
+    },
+    "entityId": "7471260034488832274",
+    "shareUrn": "urn:li:share:7471260034488831040",
+    "shareLinkedinUrl": "https://www.linkedin.com/feed/update/urn:li:share:7471260034488831040",
+    "engagement": {
+      "id": "7471260034488832274",
+      "likes": 14,
+      "comments": 2,
+      "shares": 2,
+      "reactions": [
+        {
+          "type": "LIKE",
+          "count": 6
+        }
+      ]
+    },
+    "reactionIds": [],
+    "commentIds": [],
+    "query": {
+      "sortBy": "date",
+      "page": 1,
+      "search": "freelance paris"
+    }
+  },
+  {
+    "type": "post",
+    "id": "7471260034488832411",
+    "linkedinUrl": "https://www.linkedin.com/posts/david-laurent_freelance-mission-tech-activity-7471260034488832411-0003",
+    "content": "Consultant Python Freelance recherché — Nantes — 100% remote.\n\nTJM 650€/j, expérience FastAPI + Kubernetes exigée. ASAP.",
+    "contentAttributes": [],
+    "author": {
+      "id": "ACoAAA5F6FB96B2FF54B08A176408C54",
+      "universalName": null,
+      "publicIdentifier": "david-laurent",
+      "type": "profile",
+      "name": "David Laurent",
+      "linkedinUrl": "https://www.linkedin.com/in/david-laurent?miniProfileUrn=urn%3Ali%3Afsd_profile%3AACoAAA5F6FB96B2FF54B08A176408C54",
+      "info": "Ingénieur freelance",
+      "website": null,
+      "websiteLabel": null,
+      "avatar": {
+        "url": "https://media.licdn.com/dms/image/v2/EXAMPLE/profile-framedphoto/5f6fb96b2ff54b08/0/1700000000000?e=1800000000&v=beta&t=example",
+        "width": 800,
+        "height": 800
+      },
+      "urn": "101157483"
+    },
+    "postedAt": {
+      "timestamp": 1780000300000,
+      "date": "2026-06-04T11:00:00.000Z",
+      "postedAgoShort": "4d",
+      "postedAgoText": "4 days ago • Visible to anyone on or off LinkedIn"
+    },
+    "postImages": [],
+    "postVideo": null,
+    "socialContent": {
+      "hideCommentsCount": false,
+      "hideReactionsCount": false,
+      "hideSocialActivityCounts": false,
+      "hideShareAction": true,
+      "hideSendAction": true,
+      "hideRepostsCount": false,
+      "hideViewsCount": false,
+      "trustInterventionBanner": null,
+      "hideReactAction": false,
+      "hideCommentAction": false,
+      "shareUrl": "https://www.linkedin.com/posts/david-laurent_freelance-mission-tech-activity-7471260034488832411-0003?",
+      "showContributionExperience": false,
+      "showSocialDetail": true
+    },
+    "header": {
+      "text": null
+    },
+    "entityId": "7471260034488832411",
+    "shareUrn": "urn:li:share:7471260034488831177",
+    "shareLinkedinUrl": "https://www.linkedin.com/feed/update/urn:li:share:7471260034488831177",
+    "engagement": {
+      "id": "7471260034488832411",
+      "likes": 21,
+      "comments": 3,
+      "shares": 0,
+      "reactions": [
+        {
+          "type": "LIKE",
+          "count": 9
+        }
+      ]
+    },
+    "reactionIds": [],
+    "commentIds": [],
+    "query": {
+      "sortBy": "date",
+      "page": 1,
+      "search": "freelance paris"
+    }
+  },
+  {
+    "type": "post",
+    "id": "7471260034488832548",
+    "linkedinUrl": "https://www.linkedin.com/posts/elise-garcia_freelance-mission-tech-activity-7471260034488832548-0004",
+    "content": "J'ai automatisé ma veille d'offres freelance avec un petit script Python open source. Rien de personnel dedans, juste un partage d'outil.\n\nDispo sur GitHub si ça intéresse quelqu'un.",
+    "contentAttributes": [],
+    "author": {
+      "id": "ACoAAAE07CC94E4996A0E137EC983886",
+      "universalName": null,
+      "publicIdentifier": "elise-garcia",
+      "type": "profile",
+      "name": "Elise Garcia",
+      "linkedinUrl": "https://www.linkedin.com/in/elise-garcia?miniProfileUrn=urn%3Ali%3Afsd_profile%3AACoAAAE07CC94E4996A0E137EC983886",
+      "info": "Consultant freelance",
+      "website": null,
+      "websiteLabel": null,
+      "avatar": {
+        "url": "https://media.licdn.com/dms/image/v2/EXAMPLE/profile-framedphoto/e07cc94e4996a0e1/0/1700000000000?e=1800000000&v=beta&t=example",
+        "width": 800,
+        "height": 800
+      },
+      "urn": "666274382"
+    },
+    "postedAt": {
+      "timestamp": 1780000400000,
+      "date": "2026-06-05T12:00:00.000Z",
+      "postedAgoShort": "5d",
+      "postedAgoText": "5 days ago • Visible to anyone on or off LinkedIn"
+    },
+    "postImages": [],
+    "postVideo": null,
+    "socialContent": {
+      "hideCommentsCount": false,
+      "hideReactionsCount": false,
+      "hideSocialActivityCounts": false,
+      "hideShareAction": true,
+      "hideSendAction": true,
+      "hideRepostsCount": false,
+      "hideViewsCount": false,
+      "trustInterventionBanner": null,
+      "hideReactAction": false,
+      "hideCommentAction": false,
+      "shareUrl": "https://www.linkedin.com/posts/elise-garcia_freelance-mission-tech-activity-7471260034488832548-0004?",
+      "showContributionExperience": false,
+      "showSocialDetail": true
+    },
+    "header": {
+      "text": null
+    },
+    "entityId": "7471260034488832548",
+    "shareUrn": "urn:li:share:7471260034488831314",
+    "shareLinkedinUrl": "https://www.linkedin.com/feed/update/urn:li:share:7471260034488831314",
+    "engagement": {
+      "id": "7471260034488832548",
+      "likes": 28,
+      "comments": 4,
+      "shares": 1,
+      "reactions": [
+        {
+          "type": "LIKE",
+          "count": 12
+        }
+      ]
+    },
+    "reactionIds": [],
+    "commentIds": [],
+    "query": {
+      "sortBy": "date",
+      "page": 1,
+      "search": "freelance paris"
+    }
+  },
+  {
+    "type": "post",
+    "id": "7471260034488832685",
+    "linkedinUrl": "https://www.linkedin.com/posts/farid-fournier_freelance-mission-tech-activity-7471260034488832685-0005",
+    "content": "Mission Python Data Engineer — Toulouse, sur site.\n\nTJM 620€/j, 3 mois, stack Airflow/Spark/PostgreSQL.",
+    "contentAttributes": [],
+    "author": {
+      "id": "ACoAAA351193462145586F25248D3AF4",
+      "universalName": null,
+      "publicIdentifier": "farid-fournier",
+      "type": "profile",
+      "name": "Farid Fournier",
+      "linkedinUrl": "https://www.linkedin.com/in/farid-fournier?miniProfileUrn=urn%3Ali%3Afsd_profile%3AACoAAA351193462145586F25248D3AF4",
+      "info": "Consultante freelance",
+      "website": null,
+      "websiteLabel": null,
+      "avatar": {
+        "url": "https://media.licdn.com/dms/image/v2/EXAMPLE/profile-framedphoto/351193462145586f/0/1700000000000?e=1800000000&v=beta&t=example",
+        "width": 800,
+        "height": 800
+      },
+      "urn": "190344262"
+    },
+    "postedAt": {
+      "timestamp": 1780000500000,
+      "date": "2026-06-06T13:00:00.000Z",
+      "postedAgoShort": "6d",
+      "postedAgoText": "6 days ago • Visible to anyone on or off LinkedIn"
+    },
+    "postImages": [],
+    "postVideo": null,
+    "socialContent": {
+      "hideCommentsCount": false,
+      "hideReactionsCount": false,
+      "hideSocialActivityCounts": false,
+      "hideShareAction": true,
+      "hideSendAction": true,
+      "hideRepostsCount": false,
+      "hideViewsCount": false,
+      "trustInterventionBanner": null,
+      "hideReactAction": false,
+      "hideCommentAction": false,
+      "shareUrl": "https://www.linkedin.com/posts/farid-fournier_freelance-mission-tech-activity-7471260034488832685-0005?",
+      "showContributionExperience": false,
+      "showSocialDetail": true
+    },
+    "header": {
+      "text": null
+    },
+    "entityId": "7471260034488832685",
+    "shareUrn": "urn:li:share:7471260034488831451",
+    "shareLinkedinUrl": "https://www.linkedin.com/feed/update/urn:li:share:7471260034488831451",
+    "engagement": {
+      "id": "7471260034488832685",
+      "likes": 35,
+      "comments": 5,
+      "shares": 2,
+      "reactions": [
+        {
+          "type": "LIKE",
+          "count": 15
+        }
+      ]
+    },
+    "reactionIds": [],
+    "commentIds": [],
+    "query": {
+      "sortBy": "date",
+      "page": 1,
+      "search": "freelance paris"
+    }
+  },
+  {
+    "type": "post",
+    "id": "7471260034488832822",
+    "linkedinUrl": "https://www.linkedin.com/posts/gabrielle-legrand_freelance-mission-tech-activity-7471260034488832822-0006",
+    "content": "Recherche Freelance Python/FastAPI pour startup IA, full remote, TJM 700€/j, démarrage rapide, mission 4 mois minimum.",
+    "contentAttributes": [],
+    "author": {
+      "id": "ACoAAA16DFEC264F531035AC4D523399",
+      "universalName": null,
+      "publicIdentifier": "gabrielle-legrand",
+      "type": "profile",
+      "name": "Gabrielle Legrand",
+      "linkedinUrl": "https://www.linkedin.com/in/gabrielle-legrand?miniProfileUrn=urn%3Ali%3Afsd_profile%3AACoAAA16DFEC264F531035AC4D523399",
+      "info": "Tech Lead freelance",
+      "website": null,
+      "websiteLabel": null,
+      "avatar": {
+        "url": "https://media.licdn.com/dms/image/v2/EXAMPLE/profile-framedphoto/16dfec264f531035/0/1700000000000?e=1800000000&v=beta&t=example",
+        "width": 800,
+        "height": 800
+      },
+      "urn": "483773734"
+    },
+    "postedAt": {
+      "timestamp": 1780000600000,
+      "date": "2026-06-07T14:00:00.000Z",
+      "postedAgoShort": "7d",
+      "postedAgoText": "7 days ago • Visible to anyone on or off LinkedIn"
+    },
+    "postImages": [],
+    "postVideo": null,
+    "socialContent": {
+      "hideCommentsCount": false,
+      "hideReactionsCount": false,
+      "hideSocialActivityCounts": false,
+      "hideShareAction": true,
+      "hideSendAction": true,
+      "hideRepostsCount": false,
+      "hideViewsCount": false,
+      "trustInterventionBanner": null,
+      "hideReactAction": false,
+      "hideCommentAction": false,
+      "shareUrl": "https://www.linkedin.com/posts/gabrielle-legrand_freelance-mission-tech-activity-7471260034488832822-0006?",
+      "showContributionExperience": false,
+      "showSocialDetail": true
+    },
+    "header": {
+      "text": null
+    },
+    "entityId": "7471260034488832822",
+    "shareUrn": "urn:li:share:7471260034488831588",
+    "shareLinkedinUrl": "https://www.linkedin.com/feed/update/urn:li:share:7471260034488831588",
+    "engagement": {
+      "id": "7471260034488832822",
+      "likes": 2,
+      "comments": 0,
+      "shares": 0,
+      "reactions": [
+        {
+          "type": "LIKE",
+          "count": 18
+        }
+      ]
+    },
+    "reactionIds": [],
+    "commentIds": [],
+    "query": {
+      "sortBy": "date",
+      "page": 1,
+      "search": "freelance paris"
+    }
+  },
+  {
+    "type": "post",
+    "id": "7471260034488832959",
+    "linkedinUrl": "https://www.linkedin.com/posts/hugo-dubois_freelance-mission-tech-activity-7471260034488832959-0007",
+    "content": "Offre Stage — Développeur Python Junior, Paris. Convention obligatoire, encadrement senior, stack Flask/PostgreSQL.",
+    "contentAttributes": [],
+    "author": {
+      "id": "ACoAAAEC86C3324E295E67A3D2963C31",
+      "universalName": null,
+      "publicIdentifier": "hugo-dubois",
+      "type": "profile",
+      "name": "Hugo Dubois",
+      "linkedinUrl": "https://www.linkedin.com/in/hugo-dubois?miniProfileUrn=urn%3Ali%3Afsd_profile%3AACoAAAEC86C3324E295E67A3D2963C31",
+      "info": "Développeur freelance",
+      "website": null,
+      "websiteLabel": null,
+      "avatar": {
+        "url": "https://media.licdn.com/dms/image/v2/EXAMPLE/profile-framedphoto/ec86c3324e295e67/0/1700000000000?e=1800000000&v=beta&t=example",
+        "width": 800,
+        "height": 800
+      },
+      "urn": "868254770"
+    },
+    "postedAt": {
+      "timestamp": 1780000700000,
+      "date": "2026-06-08T15:00:00.000Z",
+      "postedAgoShort": "8d",
+      "postedAgoText": "8 days ago • Visible to anyone on or off LinkedIn"
+    },
+    "postImages": [],
+    "postVideo": null,
+    "socialContent": {
+      "hideCommentsCount": false,
+      "hideReactionsCount": false,
+      "hideSocialActivityCounts": false,
+      "hideShareAction": true,
+      "hideSendAction": true,
+      "hideRepostsCount": false,
+      "hideViewsCount": false,
+      "trustInterventionBanner": null,
+      "hideReactAction": false,
+      "hideCommentAction": false,
+      "shareUrl": "https://www.linkedin.com/posts/hugo-dubois_freelance-mission-tech-activity-7471260034488832959-0007?",
+      "showContributionExperience": false,
+      "showSocialDetail": true
+    },
+    "header": {
+      "text": null
+    },
+    "entityId": "7471260034488832959",
+    "shareUrn": "urn:li:share:7471260034488831725",
+    "shareLinkedinUrl": "https://www.linkedin.com/feed/update/urn:li:share:7471260034488831725",
+    "engagement": {
+      "id": "7471260034488832959",
+      "likes": 9,
+      "comments": 1,
+      "shares": 1,
+      "reactions": [
+        {
+          "type": "LIKE",
+          "count": 1
+        }
+      ]
+    },
+    "reactionIds": [],
+    "commentIds": [],
+    "query": {
+      "sortBy": "date",
+      "page": 1,
+      "search": "freelance paris"
+    }
+  },
+  {
+    "type": "post",
+    "id": "7471260034488833096",
+    "linkedinUrl": "https://www.linkedin.com/posts/ines-petit_freelance-mission-tech-activity-7471260034488833096-0008",
+    "content": "Alternance Développeur Python recherchée pour rentrée 2026, Lille, rythme 3 semaines entreprise / 1 semaine école.",
+    "contentAttributes": [],
+    "author": {
+      "id": "ACoAAACC5B865B09C159A2856BD825F0",
+      "universalName": null,
+      "publicIdentifier": "ines-petit",
+      "type": "profile",
+      "name": "Ines Petit",
+      "linkedinUrl": "https://www.linkedin.com/in/ines-petit?miniProfileUrn=urn%3Ali%3Afsd_profile%3AACoAAACC5B865B09C159A2856BD825F0",
+      "info": "Développeuse freelance",
+      "website": null,
+      "websiteLabel": null,
+      "avatar": {
+        "url": "https://media.licdn.com/dms/image/v2/EXAMPLE/profile-framedphoto/cc5b865b09c159a2/0/1700000000000?e=1800000000&v=beta&t=example",
+        "width": 800,
+        "height": 800
+      },
+      "urn": "328550235"
+    },
+    "postedAt": {
+      "timestamp": 1780000800000,
+      "date": "2026-06-09T16:00:00.000Z",
+      "postedAgoShort": "9d",
+      "postedAgoText": "9 days ago • Visible to anyone on or off LinkedIn"
+    },
+    "postImages": [],
+    "postVideo": null,
+    "socialContent": {
+      "hideCommentsCount": false,
+      "hideReactionsCount": false,
+      "hideSocialActivityCounts": false,
+      "hideShareAction": true,
+      "hideSendAction": true,
+      "hideRepostsCount": false,
+      "hideViewsCount": false,
+      "trustInterventionBanner": null,
+      "hideReactAction": false,
+      "hideCommentAction": false,
+      "shareUrl": "https://www.linkedin.com/posts/ines-petit_freelance-mission-tech-activity-7471260034488833096-0008?",
+      "showContributionExperience": false,
+      "showSocialDetail": true
+    },
+    "header": {
+      "text": null
+    },
+    "entityId": "7471260034488833096",
+    "shareUrn": "urn:li:share:7471260034488831862",
+    "shareLinkedinUrl": "https://www.linkedin.com/feed/update/urn:li:share:7471260034488831862",
+    "engagement": {
+      "id": "7471260034488833096",
+      "likes": 16,
+      "comments": 2,
+      "shares": 2,
+      "reactions": [
+        {
+          "type": "LIKE",
+          "count": 4
+        }
+      ]
+    },
+    "reactionIds": [],
+    "commentIds": [],
+    "query": {
+      "sortBy": "date",
+      "page": 1,
+      "search": "freelance paris"
+    }
+  },
+  {
+    "type": "post",
+    "id": "7471260034488833233",
+    "linkedinUrl": "https://www.linkedin.com/posts/julien-moreau_freelance-mission-tech-activity-7471260034488833233-0009",
+    "content": "Mission freelance Python Senior, Paris, hybride, TJM 680€/j, stack FastAPI + Celery + Redis + RabbitMQ, 6 mois renouvelables.",
+    "contentAttributes": [],
+    "author": {
+      "id": "ACoAAAE133BD3E900D6835C63830A953",
+      "universalName": null,
+      "publicIdentifier": "julien-moreau",
+      "type": "profile",
+      "name": "Julien Moreau",
+      "linkedinUrl": "https://www.linkedin.com/in/julien-moreau?miniProfileUrn=urn%3Ali%3Afsd_profile%3AACoAAAE133BD3E900D6835C63830A953",
+      "info": "Lead Developer freelance",
+      "website": null,
+      "websiteLabel": null,
+      "avatar": {
+        "url": "https://media.licdn.com/dms/image/v2/EXAMPLE/profile-framedphoto/e133bd3e900d6835/0/1700000000000?e=1800000000&v=beta&t=example",
+        "width": 800,
+        "height": 800
+      },
+      "urn": "678264382"
+    },
+    "postedAt": {
+      "timestamp": 1780000900000,
+      "date": "2026-06-10T17:00:00.000Z",
+      "postedAgoShort": "10d",
+      "postedAgoText": "10 days ago • Visible to anyone on or off LinkedIn"
+    },
+    "postImages": [],
+    "postVideo": null,
+    "socialContent": {
+      "hideCommentsCount": false,
+      "hideReactionsCount": false,
+      "hideSocialActivityCounts": false,
+      "hideShareAction": true,
+      "hideSendAction": true,
+      "hideRepostsCount": false,
+      "hideViewsCount": false,
+      "trustInterventionBanner": null,
+      "hideReactAction": false,
+      "hideCommentAction": false,
+      "shareUrl": "https://www.linkedin.com/posts/julien-moreau_freelance-mission-tech-activity-7471260034488833233-0009?",
+      "showContributionExperience": false,
+      "showSocialDetail": true
+    },
+    "header": {
+      "text": null
+    },
+    "entityId": "7471260034488833233",
+    "shareUrn": "urn:li:share:7471260034488831999",
+    "shareLinkedinUrl": "https://www.linkedin.com/feed/update/urn:li:share:7471260034488831999",
+    "engagement": {
+      "id": "7471260034488833233",
+      "likes": 23,
+      "comments": 3,
+      "shares": 0,
+      "reactions": [
+        {
+          "type": "LIKE",
+          "count": 7
+        }
+      ]
+    },
+    "reactionIds": [],
+    "commentIds": [],
+    "query": {
+      "sortBy": "date",
+      "page": 1,
+      "search": "freelance paris"
+    }
+  },
+  {
+    "type": "post",
+    "id": "7471260034488833370",
+    "linkedinUrl": "https://www.linkedin.com/posts/karim-lefebvre_freelance-mission-tech-activity-7471260034488833370-0010",
+    "content": "Recherche Développeur Python CDD 8 mois, Bordeaux, sur site, stack Django/PostgreSQL, projet interne RH.",
+    "contentAttributes": [],
+    "author": {
+      "id": "ACoAAA9B3EB6827A7246CC4F0E2DEEDA",
+      "universalName": null,
+      "publicIdentifier": "karim-lefebvre",
+      "type": "profile",
+      "name": "Karim Lefebvre",
+      "linkedinUrl": "https://www.linkedin.com/in/karim-lefebvre?miniProfileUrn=urn%3Ali%3Afsd_profile%3AACoAAA9B3EB6827A7246CC4F0E2DEEDA",
+      "info": "Ingénieur freelance",
+      "website": null,
+      "websiteLabel": null,
+      "avatar": {
+        "url": "https://media.licdn.com/dms/image/v2/EXAMPLE/profile-framedphoto/9b3eb6827a7246cc/0/1700000000000?e=1800000000&v=beta&t=example",
+        "width": 800,
+        "height": 800
+      },
+      "urn": "304578434"
+    },
+    "postedAt": {
+      "timestamp": 1780001000000,
+      "date": "2026-06-11T18:00:00.000Z",
+      "postedAgoShort": "11d",
+      "postedAgoText": "11 days ago • Visible to anyone on or off LinkedIn"
+    },
+    "postImages": [],
+    "postVideo": null,
+    "socialContent": {
+      "hideCommentsCount": false,
+      "hideReactionsCount": false,
+      "hideSocialActivityCounts": false,
+      "hideShareAction": true,
+      "hideSendAction": true,
+      "hideRepostsCount": false,
+      "hideViewsCount": false,
+      "trustInterventionBanner": null,
+      "hideReactAction": false,
+      "hideCommentAction": false,
+      "shareUrl": "https://www.linkedin.com/posts/karim-lefebvre_freelance-mission-tech-activity-7471260034488833370-0010?",
+      "showContributionExperience": false,
+      "showSocialDetail": true
+    },
+    "header": {
+      "text": null
+    },
+    "entityId": "7471260034488833370",
+    "shareUrn": "urn:li:share:7471260034488832136",
+    "shareLinkedinUrl": "https://www.linkedin.com/feed/update/urn:li:share:7471260034488832136",
+    "engagement": {
+      "id": "7471260034488833370",
+      "likes": 30,
+      "comments": 4,
+      "shares": 1,
+      "reactions": [
+        {
+          "type": "LIKE",
+          "count": 10
+        }
+      ]
+    },
+    "reactionIds": [],
+    "commentIds": [],
+    "query": {
+      "sortBy": "date",
+      "page": 1,
+      "search": "freelance paris"
+    }
+  },
+  {
+    "type": "post",
+    "id": "7471260034488833507",
+    "linkedinUrl": "https://www.linkedin.com/posts/lea-girard_freelance-mission-tech-activity-7471260034488833507-0011",
+    "content": "Freelance Python/DevOps, full remote, TJM 750€/j, stack Terraform/AWS/Python, mission ASAP 12 mois.",
+    "contentAttributes": [],
+    "author": {
+      "id": "ACoAAA698A3BF5092702E5C01ECFA88B",
+      "universalName": null,
+      "publicIdentifier": "lea-girard",
+      "type": "profile",
+      "name": "Lea Girard",
+      "linkedinUrl": "https://www.linkedin.com/in/lea-girard?miniProfileUrn=urn%3Ali%3Afsd_profile%3AACoAAA698A3BF5092702E5C01ECFA88B",
+      "info": "Consultant freelance",
+      "website": null,
+      "websiteLabel": null,
+      "avatar": {
+        "url": "https://media.licdn.com/dms/image/v2/EXAMPLE/profile-framedphoto/698a3bf5092702e5/0/1700000000000?e=1800000000&v=beta&t=example",
+        "width": 800,
+        "height": 800
+      },
+      "urn": "270666997"
+    },
+    "postedAt": {
+      "timestamp": 1780001100000,
+      "date": "2026-06-12T19:00:00.000Z",
+      "postedAgoShort": "12d",
+      "postedAgoText": "12 days ago • Visible to anyone on or off LinkedIn"
+    },
+    "postImages": [],
+    "postVideo": null,
+    "socialContent": {
+      "hideCommentsCount": false,
+      "hideReactionsCount": false,
+      "hideSocialActivityCounts": false,
+      "hideShareAction": true,
+      "hideSendAction": true,
+      "hideRepostsCount": false,
+      "hideViewsCount": false,
+      "trustInterventionBanner": null,
+      "hideReactAction": false,
+      "hideCommentAction": false,
+      "shareUrl": "https://www.linkedin.com/posts/lea-girard_freelance-mission-tech-activity-7471260034488833507-0011?",
+      "showContributionExperience": false,
+      "showSocialDetail": true
+    },
+    "header": {
+      "text": null
+    },
+    "entityId": "7471260034488833507",
+    "shareUrn": "urn:li:share:7471260034488832273",
+    "shareLinkedinUrl": "https://www.linkedin.com/feed/update/urn:li:share:7471260034488832273",
+    "engagement": {
+      "id": "7471260034488833507",
+      "likes": 37,
+      "comments": 5,
+      "shares": 2,
+      "reactions": [
+        {
+          "type": "LIKE",
+          "count": 13
+        }
+      ]
+    },
+    "reactionIds": [],
+    "commentIds": [],
+    "query": {
+      "sortBy": "date",
+      "page": 1,
+      "search": "freelance paris"
+    }
+  },
+  {
+    "type": "post",
+    "id": "7471260034488833644",
+    "linkedinUrl": "https://www.linkedin.com/posts/marc-vincent_freelance-mission-tech-activity-7471260034488833644-0012",
+    "content": "Consultant Python Freelance, Lyon, hybride 1j/semaine, TJM 600€/j, stack FastAPI/PostgreSQL/Docker, mission 4 mois.",
+    "contentAttributes": [],
+    "author": {
+      "id": "ACoAAACDA05460AA9E671272A94DE5DC",
+      "universalName": null,
+      "publicIdentifier": "marc-vincent",
+      "type": "profile",
+      "name": "Marc Vincent",
+      "linkedinUrl": "https://www.linkedin.com/in/marc-vincent?miniProfileUrn=urn%3Ali%3Afsd_profile%3AACoAAACDA05460AA9E671272A94DE5DC",
+      "info": "Consultante freelance",
+      "website": null,
+      "websiteLabel": null,
+      "avatar": {
+        "url": "https://media.licdn.com/dms/image/v2/EXAMPLE/profile-framedphoto/cda05460aa9e6712/0/1700000000000?e=1800000000&v=beta&t=example",
+        "width": 800,
+        "height": 800
+      },
+      "urn": "349836640"
+    },
+    "postedAt": {
+      "timestamp": 1780001200000,
+      "date": "2026-06-13T20:00:00.000Z",
+      "postedAgoShort": "13d",
+      "postedAgoText": "13 days ago • Visible to anyone on or off LinkedIn"
+    },
+    "postImages": [],
+    "postVideo": null,
+    "socialContent": {
+      "hideCommentsCount": false,
+      "hideReactionsCount": false,
+      "hideSocialActivityCounts": false,
+      "hideShareAction": true,
+      "hideSendAction": true,
+      "hideRepostsCount": false,
+      "hideViewsCount": false,
+      "trustInterventionBanner": null,
+      "hideReactAction": false,
+      "hideCommentAction": false,
+      "shareUrl": "https://www.linkedin.com/posts/marc-vincent_freelance-mission-tech-activity-7471260034488833644-0012?",
+      "showContributionExperience": false,
+      "showSocialDetail": true
+    },
+    "header": {
+      "text": null
+    },
+    "entityId": "7471260034488833644",
+    "shareUrn": "urn:li:share:7471260034488832410",
+    "shareLinkedinUrl": "https://www.linkedin.com/feed/update/urn:li:share:7471260034488832410",
+    "engagement": {
+      "id": "7471260034488833644",
+      "likes": 4,
+      "comments": 0,
+      "shares": 0,
+      "reactions": [
+        {
+          "type": "LIKE",
+          "count": 16
+        }
+      ]
+    },
+    "reactionIds": [],
+    "commentIds": [],
+    "query": {
+      "sortBy": "date",
+      "page": 1,
+      "search": "freelance paris"
+    }
+  },
+  {
+    "type": "post",
+    "id": "7471260034488833781",
+    "linkedinUrl": "https://www.linkedin.com/posts/nora-martin_freelance-mission-tech-activity-7471260034488833781-0013",
+    "content": "Recherche Python Backend Engineer, Paris, full remote, TJM 720€/j, stack FastAPI/Celery/Redis, démarrage ASAP.",
+    "contentAttributes": [],
+    "author": {
+      "id": "ACoAAAAE5F15B0641F961BC8AA2BDA28",
+      "universalName": null,
+      "publicIdentifier": "nora-martin",
+      "type": "profile",
+      "name": "Nora Martin",
+      "linkedinUrl": "https://www.linkedin.com/in/nora-martin?miniProfileUrn=urn%3Ali%3Afsd_profile%3AACoAAAAE5F15B0641F961BC8AA2BDA28",
+      "info": "Tech Lead freelance",
+      "website": null,
+      "websiteLabel": null,
+      "avatar": {
+        "url": "https://media.licdn.com/dms/image/v2/EXAMPLE/profile-framedphoto/ae5f15b0641f961b/0/1700000000000?e=1800000000&v=beta&t=example",
+        "width": 800,
+        "height": 800
+      },
+      "urn": "625467056"
+    },
+    "postedAt": {
+      "timestamp": 1780001300000,
+      "date": "2026-06-14T21:00:00.000Z",
+      "postedAgoShort": "14d",
+      "postedAgoText": "14 days ago • Visible to anyone on or off LinkedIn"
+    },
+    "postImages": [],
+    "postVideo": null,
+    "socialContent": {
+      "hideCommentsCount": false,
+      "hideReactionsCount": false,
+      "hideSocialActivityCounts": false,
+      "hideShareAction": true,
+      "hideSendAction": true,
+      "hideRepostsCount": false,
+      "hideViewsCount": false,
+      "trustInterventionBanner": null,
+      "hideReactAction": false,
+      "hideCommentAction": false,
+      "shareUrl": "https://www.linkedin.com/posts/nora-martin_freelance-mission-tech-activity-7471260034488833781-0013?",
+      "showContributionExperience": false,
+      "showSocialDetail": true
+    },
+    "header": {
+      "text": null
+    },
+    "entityId": "7471260034488833781",
+    "shareUrn": "urn:li:share:7471260034488832547",
+    "shareLinkedinUrl": "https://www.linkedin.com/feed/update/urn:li:share:7471260034488832547",
+    "engagement": {
+      "id": "7471260034488833781",
+      "likes": 11,
+      "comments": 1,
+      "shares": 1,
+      "reactions": [
+        {
+          "type": "LIKE",
+          "count": 19
+        }
+      ]
+    },
+    "reactionIds": [],
+    "commentIds": [],
+    "query": {
+      "sortBy": "date",
+      "page": 1,
+      "search": "freelance paris"
+    }
+  },
+  {
+    "type": "post",
+    "id": "7471260034488833918",
+    "linkedinUrl": "https://www.linkedin.com/posts/oscar-roux_freelance-mission-tech-activity-7471260034488833918-0014",
+    "content": "Offre CDI Python Fullstack, Nantes, télétravail 3j/semaine, stack Django/React, équipe produit de 10 personnes.",
+    "contentAttributes": [],
+    "author": {
+      "id": "ACoAAA35F549F0B44A3E90FDA6403460",
+      "universalName": null,
+      "publicIdentifier": "oscar-roux",
+      "type": "profile",
+      "name": "Oscar Roux",
+      "linkedinUrl": "https://www.linkedin.com/in/oscar-roux?miniProfileUrn=urn%3Ali%3Afsd_profile%3AACoAAA35F549F0B44A3E90FDA6403460",
+      "info": "Développeur freelance",
+      "website": null,
+      "websiteLabel": null,
+      "avatar": {
+        "url": "https://media.licdn.com/dms/image/v2/EXAMPLE/profile-framedphoto/35f549f0b44a3e90/0/1700000000000?e=1800000000&v=beta&t=example",
+        "width": 800,
+        "height": 800
+      },
+      "urn": "205267696"
+    },
+    "postedAt": {
+      "timestamp": 1780001400000,
+      "date": "2026-06-15T22:00:00.000Z",
+      "postedAgoShort": "15d",
+      "postedAgoText": "15 days ago • Visible to anyone on or off LinkedIn"
+    },
+    "postImages": [],
+    "postVideo": null,
+    "socialContent": {
+      "hideCommentsCount": false,
+      "hideReactionsCount": false,
+      "hideSocialActivityCounts": false,
+      "hideShareAction": true,
+      "hideSendAction": true,
+      "hideRepostsCount": false,
+      "hideViewsCount": false,
+      "trustInterventionBanner": null,
+      "hideReactAction": false,
+      "hideCommentAction": false,
+      "shareUrl": "https://www.linkedin.com/posts/oscar-roux_freelance-mission-tech-activity-7471260034488833918-0014?",
+      "showContributionExperience": false,
+      "showSocialDetail": true
+    },
+    "header": {
+      "text": null
+    },
+    "entityId": "7471260034488833918",
+    "shareUrn": "urn:li:share:7471260034488832684",
+    "shareLinkedinUrl": "https://www.linkedin.com/feed/update/urn:li:share:7471260034488832684",
+    "engagement": {
+      "id": "7471260034488833918",
+      "likes": 18,
+      "comments": 2,
+      "shares": 2,
+      "reactions": [
+        {
+          "type": "LIKE",
+          "count": 2
+        }
+      ]
+    },
+    "reactionIds": [],
+    "commentIds": [],
+    "query": {
+      "sortBy": "date",
+      "page": 1,
+      "search": "freelance paris"
+    }
+  },
+  {
+    "type": "post",
+    "id": "7471260034488834055",
+    "linkedinUrl": "https://www.linkedin.com/posts/pauline-durand_freelance-mission-tech-activity-7471260034488834055-0015",
+    "content": "Mission freelance Data Python, Toulouse, sur site, TJM 640€/j, stack Pandas/Airflow/PostgreSQL, 5 mois.",
+    "contentAttributes": [],
+    "author": {
+      "id": "ACoAAADD2864E8BAF54101479500137E",
+      "universalName": null,
+      "publicIdentifier": "pauline-durand",
+      "type": "profile",
+      "name": "Pauline Durand",
+      "linkedinUrl": "https://www.linkedin.com/in/pauline-durand?miniProfileUrn=urn%3Ali%3Afsd_profile%3AACoAAADD2864E8BAF54101479500137E",
+      "info": "Développeuse freelance",
+      "website": null,
+      "websiteLabel": null,
+      "avatar": {
+        "url": "https://media.licdn.com/dms/image/v2/EXAMPLE/profile-framedphoto/dd2864e8baf54101/0/1700000000000?e=1800000000&v=beta&t=example",
+        "width": 800,
+        "height": 800
+      },
+      "urn": "610412008"
+    },
+    "postedAt": {
+      "timestamp": 1780001500000,
+      "date": "2026-06-16T23:00:00.000Z",
+      "postedAgoShort": "16d",
+      "postedAgoText": "16 days ago • Visible to anyone on or off LinkedIn"
+    },
+    "postImages": [],
+    "postVideo": null,
+    "socialContent": {
+      "hideCommentsCount": false,
+      "hideReactionsCount": false,
+      "hideSocialActivityCounts": false,
+      "hideShareAction": true,
+      "hideSendAction": true,
+      "hideRepostsCount": false,
+      "hideViewsCount": false,
+      "trustInterventionBanner": null,
+      "hideReactAction": false,
+      "hideCommentAction": false,
+      "shareUrl": "https://www.linkedin.com/posts/pauline-durand_freelance-mission-tech-activity-7471260034488834055-0015?",
+      "showContributionExperience": false,
+      "showSocialDetail": true
+    },
+    "header": {
+      "text": null
+    },
+    "entityId": "7471260034488834055",
+    "shareUrn": "urn:li:share:7471260034488832821",
+    "shareLinkedinUrl": "https://www.linkedin.com/feed/update/urn:li:share:7471260034488832821",
+    "engagement": {
+      "id": "7471260034488834055",
+      "likes": 25,
+      "comments": 3,
+      "shares": 0,
+      "reactions": [
+        {
+          "type": "LIKE",
+          "count": 5
+        }
+      ]
+    },
+    "reactionIds": [],
+    "commentIds": [],
+    "query": {
+      "sortBy": "date",
+      "page": 1,
+      "search": "freelance paris"
+    }
+  },
+  {
+    "type": "post",
+    "id": "7471260034488834192",
+    "linkedinUrl": "https://www.linkedin.com/posts/quentin-simon_freelance-mission-tech-activity-7471260034488834192-0016",
+    "content": "Recherche Lead Python Freelance, Paris, full remote, TJM 780€/j, stack FastAPI/Kubernetes/PostgreSQL, mission longue durée.",
+    "contentAttributes": [],
+    "author": {
+      "id": "ACoAAA4ADFF3C80D58D6407E6F23F1CF",
+      "universalName": null,
+      "publicIdentifier": "quentin-simon",
+      "type": "profile",
+      "name": "Quentin Simon",
+      "linkedinUrl": "https://www.linkedin.com/in/quentin-simon?miniProfileUrn=urn%3Ali%3Afsd_profile%3AACoAAA4ADFF3C80D58D6407E6F23F1CF",
+      "info": "Lead Developer freelance",
+      "website": null,
+      "websiteLabel": null,
+      "avatar": {
+        "url": "https://media.licdn.com/dms/image/v2/EXAMPLE/profile-framedphoto/4adff3c80d58d640/0/1700000000000?e=1800000000&v=beta&t=example",
+        "width": 800,
+        "height": 800
+      },
+      "urn": "556190920"
+    },
+    "postedAt": {
+      "timestamp": 1780001600000,
+      "date": "2026-06-17T00:00:00.000Z",
+      "postedAgoShort": "17d",
+      "postedAgoText": "17 days ago • Visible to anyone on or off LinkedIn"
+    },
+    "postImages": [],
+    "postVideo": null,
+    "socialContent": {
+      "hideCommentsCount": false,
+      "hideReactionsCount": false,
+      "hideSocialActivityCounts": false,
+      "hideShareAction": true,
+      "hideSendAction": true,
+      "hideRepostsCount": false,
+      "hideViewsCount": false,
+      "trustInterventionBanner": null,
+      "hideReactAction": false,
+      "hideCommentAction": false,
+      "shareUrl": "https://www.linkedin.com/posts/quentin-simon_freelance-mission-tech-activity-7471260034488834192-0016?",
+      "showContributionExperience": false,
+      "showSocialDetail": true
+    },
+    "header": {
+      "text": null
+    },
+    "entityId": "7471260034488834192",
+    "shareUrn": "urn:li:share:7471260034488832958",
+    "shareLinkedinUrl": "https://www.linkedin.com/feed/update/urn:li:share:7471260034488832958",
+    "engagement": {
+      "id": "7471260034488834192",
+      "likes": 32,
+      "comments": 4,
+      "shares": 1,
+      "reactions": [
+        {
+          "type": "LIKE",
+          "count": 8
+        }
+      ]
+    },
+    "reactionIds": [],
+    "commentIds": [],
+    "query": {
+      "sortBy": "date",
+      "page": 1,
+      "search": "freelance paris"
+    }
+  },
+  {
+    "type": "post",
+    "id": "7471260034488834329",
+    "linkedinUrl": "https://www.linkedin.com/posts/romane-michel_freelance-mission-tech-activity-7471260034488834329-0017",
+    "content": "Alternance Data/Python recherchée, Lille, rentrée 2026, stack Python/SQL/Airflow, tutorat assuré.",
+    "contentAttributes": [],
+    "author": {
+      "id": "ACoAAA33D5705CE1BECF4C5D40F46407",
+      "universalName": null,
+      "publicIdentifier": "romane-michel",
+      "type": "profile",
+      "name": "Romane Michel",
+      "linkedinUrl": "https://www.linkedin.com/in/romane-michel?miniProfileUrn=urn%3Ali%3Afsd_profile%3AACoAAA33D5705CE1BECF4C5D40F46407",
+      "info": "Ingénieur freelance",
+      "website": null,
+      "websiteLabel": null,
+      "avatar": {
+        "url": "https://media.licdn.com/dms/image/v2/EXAMPLE/profile-framedphoto/33d5705ce1becf4c/0/1700000000000?e=1800000000&v=beta&t=example",
+        "width": 800,
+        "height": 800
+      },
+      "urn": "169625948"
+    },
+    "postedAt": {
+      "timestamp": 1780001700000,
+      "date": "2026-06-18T01:00:00.000Z",
+      "postedAgoShort": "18d",
+      "postedAgoText": "18 days ago • Visible to anyone on or off LinkedIn"
+    },
+    "postImages": [],
+    "postVideo": null,
+    "socialContent": {
+      "hideCommentsCount": false,
+      "hideReactionsCount": false,
+      "hideSocialActivityCounts": false,
+      "hideShareAction": true,
+      "hideSendAction": true,
+      "hideRepostsCount": false,
+      "hideViewsCount": false,
+      "trustInterventionBanner": null,
+      "hideReactAction": false,
+      "hideCommentAction": false,
+      "shareUrl": "https://www.linkedin.com/posts/romane-michel_freelance-mission-tech-activity-7471260034488834329-0017?",
+      "showContributionExperience": false,
+      "showSocialDetail": true
+    },
+    "header": {
+      "text": null
+    },
+    "entityId": "7471260034488834329",
+    "shareUrn": "urn:li:share:7471260034488833095",
+    "shareLinkedinUrl": "https://www.linkedin.com/feed/update/urn:li:share:7471260034488833095",
+    "engagement": {
+      "id": "7471260034488834329",
+      "likes": 39,
+      "comments": 5,
+      "shares": 2,
+      "reactions": [
+        {
+          "type": "LIKE",
+          "count": 11
+        }
+      ]
+    },
+    "reactionIds": [],
+    "commentIds": [],
+    "query": {
+      "sortBy": "date",
+      "page": 1,
+      "search": "freelance paris"
+    }
+  },
+  {
+    "type": "post",
+    "id": "7471260034488834466",
+    "linkedinUrl": "https://www.linkedin.com/posts/samir-bertrand_freelance-mission-tech-activity-7471260034488834466-0018",
+    "content": "Freelance Python/FastAPI, Bordeaux, hybride, TJM 660€/j, stack FastAPI/PostgreSQL/Docker, mission 6 mois.",
+    "contentAttributes": [],
+    "author": {
+      "id": "ACoAAAE5EFF241CBD86B2E059DC89E40",
+      "universalName": null,
+      "publicIdentifier": "samir-bertrand",
+      "type": "profile",
+      "name": "Samir Bertrand",
+      "linkedinUrl": "https://www.linkedin.com/in/samir-bertrand?miniProfileUrn=urn%3Ali%3Afsd_profile%3AACoAAAE5EFF241CBD86B2E059DC89E40",
+      "info": "Consultant freelance",
+      "website": null,
+      "websiteLabel": null,
+      "avatar": {
+        "url": "https://media.licdn.com/dms/image/v2/EXAMPLE/profile-framedphoto/e5eff241cbd86b2e/0/1700000000000?e=1800000000&v=beta&t=example",
+        "width": 800,
+        "height": 800
+      },
+      "urn": "757707585"
+    },
+    "postedAt": {
+      "timestamp": 1780001800000,
+      "date": "2026-06-19T02:00:00.000Z",
+      "postedAgoShort": "19d",
+      "postedAgoText": "19 days ago • Visible to anyone on or off LinkedIn"
+    },
+    "postImages": [],
+    "postVideo": null,
+    "socialContent": {
+      "hideCommentsCount": false,
+      "hideReactionsCount": false,
+      "hideSocialActivityCounts": false,
+      "hideShareAction": true,
+      "hideSendAction": true,
+      "hideRepostsCount": false,
+      "hideViewsCount": false,
+      "trustInterventionBanner": null,
+      "hideReactAction": false,
+      "hideCommentAction": false,
+      "shareUrl": "https://www.linkedin.com/posts/samir-bertrand_freelance-mission-tech-activity-7471260034488834466-0018?",
+      "showContributionExperience": false,
+      "showSocialDetail": true
+    },
+    "header": {
+      "text": null
+    },
+    "entityId": "7471260034488834466",
+    "shareUrn": "urn:li:share:7471260034488833232",
+    "shareLinkedinUrl": "https://www.linkedin.com/feed/update/urn:li:share:7471260034488833232",
+    "engagement": {
+      "id": "7471260034488834466",
+      "likes": 6,
+      "comments": 0,
+      "shares": 0,
+      "reactions": [
+        {
+          "type": "LIKE",
+          "count": 14
+        }
+      ]
+    },
+    "reactionIds": [],
+    "commentIds": [],
+    "query": {
+      "sortBy": "date",
+      "page": 1,
+      "search": "freelance paris"
+    }
+  },
+  {
+    "type": "post",
+    "id": "7471260034488834603",
+    "linkedinUrl": "https://www.linkedin.com/posts/theo-morel_freelance-mission-tech-activity-7471260034488834603-0019",
+    "content": "Mission Python Backend Senior, Paris, full remote, TJM 700€/j, stack FastAPI/Celery/PostgreSQL, ASAP.",
+    "contentAttributes": [],
+    "author": {
+      "id": "ACoAAAEA8F5D1438603605B391CF7CB4",
+      "universalName": null,
+      "publicIdentifier": "theo-morel",
+      "type": "profile",
+      "name": "Theo Morel",
+      "linkedinUrl": "https://www.linkedin.com/in/theo-morel?miniProfileUrn=urn%3Ali%3Afsd_profile%3AACoAAAEA8F5D1438603605B391CF7CB4",
+      "info": "Consultante freelance",
+      "website": null,
+      "websiteLabel": null,
+      "avatar": {
+        "url": "https://media.licdn.com/dms/image/v2/EXAMPLE/profile-framedphoto/ea8f5d1438603605/0/1700000000000?e=1800000000&v=beta&t=example",
+        "width": 800,
+        "height": 800
+      },
+      "urn": "835264020"
+    },
+    "postedAt": {
+      "timestamp": 1780001900000,
+      "date": "2026-06-20T03:00:00.000Z",
+      "postedAgoShort": "20d",
+      "postedAgoText": "20 days ago • Visible to anyone on or off LinkedIn"
+    },
+    "postImages": [],
+    "postVideo": null,
+    "socialContent": {
+      "hideCommentsCount": false,
+      "hideReactionsCount": false,
+      "hideSocialActivityCounts": false,
+      "hideShareAction": true,
+      "hideSendAction": true,
+      "hideRepostsCount": false,
+      "hideViewsCount": false,
+      "trustInterventionBanner": null,
+      "hideReactAction": false,
+      "hideCommentAction": false,
+      "shareUrl": "https://www.linkedin.com/posts/theo-morel_freelance-mission-tech-activity-7471260034488834603-0019?",
+      "showContributionExperience": false,
+      "showSocialDetail": true
+    },
+    "header": {
+      "text": null
+    },
+    "entityId": "7471260034488834603",
+    "shareUrn": "urn:li:share:7471260034488833369",
+    "shareLinkedinUrl": "https://www.linkedin.com/feed/update/urn:li:share:7471260034488833369",
+    "engagement": {
+      "id": "7471260034488834603",
+      "likes": 13,
+      "comments": 1,
+      "shares": 1,
+      "reactions": [
+        {
+          "type": "LIKE",
+          "count": 17
+        }
+      ]
+    },
+    "reactionIds": [],
+    "commentIds": [],
+    "query": {
+      "sortBy": "date",
+      "page": 1,
+      "search": "freelance paris"
+    }
+  }
+]

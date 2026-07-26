@@ -1,0 +1,41 @@
+# ── Secrets & environnement ──────────────────────────────
+.env
+.env.local
+.env.*.local
+frontend/.env
+frontend/.env.local
+
+# ── Python ────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# ── DeepEval ──────────────────────────────────────────────
+backend/.deepeval/
+.deepeval_telemetry.txt
+
+# ── Frontend ──────────────────────────────────────────────
+frontend/node_modules/
+frontend/dist/
+
+# ── IDE ───────────────────────────────────────────────────
+.idea/
+
+# ── Claude Code (config locale uniquement) ───────────────
+.claude/scheduled_tasks.lock
+
+# ── Rapports d'évaluation générés ─────────────────────────
+evaluation/reports/*.md
+!evaluation/reports/.gitkeep
+
+# ── Système / éditeurs ────────────────────────────────────
+.DS_Store
+*.log
+*.swp
+*~

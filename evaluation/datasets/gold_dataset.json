@@ -1,0 +1,316 @@
+{
+  "version": "1.1",
+  "samples": [
+    {
+      "raw_post_id": "urn:li:activity:7234567890123456789",
+      "post_content": "🚀 Mission freelance - Développeur Python Senior\n\nNous recherchons pour notre client Accenture un développeur Python Senior en freelance.\n\n📍 Localisation : Paris, France (télétravail partiel / hybride)\n💰 TJM : 650€/jour\n📅 Contrat : Freelance\n\nStack technique : Python, FastAPI, PostgreSQL, Docker\n\nMission longue durée, démarrage ASAP. Envoyez votre CV en MP !\n#freelance #python #fastapi",
+      "expected_company": "Accenture",
+      "expected_title": "Développeur Python Senior",
+      "expected_location": "Paris, France",
+      "expected_contract": "freelance",
+      "expected_remote": "hybrid",
+      "expected_stack": [
+        "python",
+        "fastapi",
+        "postgresql",
+        "docker"
+      ],
+      "expected_tjm": 650.0,
+      "expected_salary": null
+    },
+    {
+      "raw_post_id": "urn:li:activity:7234567890123456790",
+      "post_content": "Recherche Tech Lead Python / FastAPI en freelance pour la Société Générale.\n\n📍 La Défense, France - mode hybride (2-3 jours sur site)\n💶 TJM : 750€/jour\n📄 Type de contrat : Freelance\n\nStack : Python, FastAPI, Kafka, Redis, Kubernetes\n\nVous encadrerez une équipe de 4 développeurs sur une plateforme de trading. Expérience Tech Lead exigée.\n#techlead #python #kubernetes",
+      "expected_company": "Société Générale",
+      "expected_title": "Tech Lead Python / FastAPI",
+      "expected_location": "La Défense, France",
+      "expected_contract": "freelance",
+      "expected_remote": "hybrid",
+      "expected_stack": [
+        "python",
+        "fastapi",
+        "kafka",
+        "redis",
+        "kubernetes"
+      ],
+      "expected_tjm": 750.0,
+      "expected_salary": null
+    },
+    {
+      "raw_post_id": "urn:li:activity:7234567890123456791",
+      "post_content": "Mission freelance - Data Engineer Python chez BNP Paribas\n\n📍 Paris 9ème, France - sur site (onsite, présence quotidienne requise)\n💰 TJM cible : 700€/jour\n📅 Freelance, 6 mois renouvelables\n\nStack technique : Python, Airflow, Spark, PostgreSQL, dbt\n\nVous rejoignez l'équipe data pour construire les pipelines ETL de la banque de détail.\n#dataengineer #python #airflow",
+      "expected_company": "BNP Paribas",
+      "expected_title": "Data Engineer Python",
+      "expected_location": "Paris 9ème, France",
+      "expected_contract": "freelance",
+      "expected_remote": "onsite",
+      "expected_stack": [
+        "python",
+        "airflow",
+        "spark",
+        "postgresql",
+        "dbt"
+      ],
+      "expected_tjm": 700.0,
+      "expected_salary": null
+    },
+    {
+      "raw_post_id": "urn:li:activity:7234567890123456792",
+      "post_content": "Backend Python Senior - Full Remote 🌍\n\nMission freelance 100% télétravail (full remote), aucune contrainte de localisation.\n💶 TJM : 600€/jour\n📄 Contrat : Freelance\n\nStack : Python, FastAPI, SQLAlchemy, Celery, Redis\n\nStartup en forte croissance, architecture microservices. Client final non communiqué à ce stade.\n#fullremote #python #backend",
+      "expected_company": null,
+      "expected_title": "Backend Python Senior Full Remote",
+      "expected_location": null,
+      "expected_contract": "freelance",
+      "expected_remote": "full_remote",
+      "expected_stack": [
+        "python",
+        "fastapi",
+        "sqlalchemy",
+        "celery",
+        "redis"
+      ],
+      "expected_tjm": 600.0,
+      "expected_salary": null
+    },
+    {
+      "raw_post_id": "urn:li:activity:7234567890123456793",
+      "post_content": "🔍 Recherche Architecte Python / AWS en freelance pour AXA\n\n📍 Nanterre, France - hybride (3 jours sur site / 2 jours télétravail)\n💰 TJM : 800€/jour\n📅 Freelance, mission de 12 mois\n\nStack : Python, AWS, Terraform, Docker, FastAPI\n\nVous définirez l'architecture cible de la plateforme cloud assurance. Expérience Architecte confirmée requise.\n#architecte #aws #python",
+      "expected_company": "AXA",
+      "expected_title": "Architecte Python / AWS",
+      "expected_location": "Nanterre, France",
+      "expected_contract": "freelance",
+      "expected_remote": "hybrid",
+      "expected_stack": [
+        "python",
+        "aws",
+        "terraform",
+        "docker",
+        "fastapi"
+      ],
+      "expected_tjm": 800.0,
+      "expected_salary": null
+    },
+    {
+      "raw_post_id": "urn:li:activity:7234567890123456794",
+      "post_content": "Capgemini recrute un Développeur Python / Django Senior en CDI\n\n📍 Toulouse, France - mode hybride\n💶 Salaire : 65 000€ brut annuel\n📄 Type de contrat : CDI\n\nStack : Python, Django, PostgreSQL, React\n\nRejoignez une équipe produit interne, environnement agile Scrum. Poste ouvert aux profils confirmés.\n#CDI #python #django",
+      "expected_company": "Capgemini",
+      "expected_title": "Développeur Python / Django Senior",
+      "expected_location": "Toulouse, France",
+      "expected_contract": "permanent",
+      "expected_remote": "hybrid",
+      "expected_stack": [
+        "python",
+        "django",
+        "postgresql",
+        "react"
+      ],
+      "expected_tjm": null,
+      "expected_salary": 65000.0
+    },
+    {
+      "raw_post_id": "urn:li:activity:7234567890123456795",
+      "post_content": "Mission freelance - Lead Developer Python Machine Learning chez SNCF\n\n📍 Paris, France - hybride\n💰 TJM : 720€/jour\n📅 Freelance, démarrage rapide\n\nStack : Python, Scikit-learn, Pandas, FastAPI, PostgreSQL\n\nVous piloterez une équipe de 3 data scientists sur des modèles de maintenance prédictive.\n#machinelearning #python #leaddev",
+      "expected_company": "SNCF",
+      "expected_title": "Lead Developer Python Machine Learning",
+      "expected_location": "Paris, France",
+      "expected_contract": "freelance",
+      "expected_remote": "hybrid",
+      "expected_stack": [
+        "python",
+        "scikit-learn",
+        "pandas",
+        "fastapi",
+        "postgresql"
+      ],
+      "expected_tjm": 720.0,
+      "expected_salary": null
+    },
+    {
+      "raw_post_id": "urn:li:activity:7234567890123456796",
+      "post_content": "TotalEnergies recherche un Python Developer Full Stack en freelance\n\n📍 Paris La Défense, France - sur site (onsite)\n💶 TJM : 580€/jour\n📄 Contrat : Freelance\n\nStack : Python, FastAPI, Vue.js, PostgreSQL, Docker\n\nMission au sein de la DSI, application interne de gestion énergétique. Présence sur site 5j/5 requise.\n#fullstack #python #vuejs",
+      "expected_company": "TotalEnergies",
+      "expected_title": "Python Developer Full Stack",
+      "expected_location": "Paris La Défense, France",
+      "expected_contract": "freelance",
+      "expected_remote": "onsite",
+      "expected_stack": [
+        "python",
+        "fastapi",
+        "vue.js",
+        "postgresql",
+        "docker"
+      ],
+      "expected_tjm": 580.0,
+      "expected_salary": null
+    },
+    {
+      "raw_post_id": "7470387301425213440",
+      "post_content": "🚀 Mission freelance – AI Engineer GCP / Neo4j / GenAI\n\nJe recherche un AI Engineer pour accompagner un projet stratégique autour de l’IA générative, dans un environnement cloud GCP.\n\nCompétences attendues :\n✅ Expérience confirmée en AI Engineering\n✅ Bonne maîtrise de Google Cloud Platform\n✅ Expérience sur des sujets GenAI\n✅ Maîtrise de Neo4j, avec plusieurs projets réalisés\n✅ Connaissance de Cypher\n✅ Expérience appréciée sur RAG, GraphRAG, knowledge graph ou recherche sémantique\n✅ Très bonne maîtrise de Python\n✅ Français / anglais\n\n📍 Lieu : Paris\n🏠 Télétravail : 2 jours par semaine\n🏢 Présence sur site : 3 jours par semaine\n📅 Démarrage : 01/07/2026\n⏳ Durée : 1 an renouvelable\n💼 Format : freelance\n\nMerci de me contacter directement si vous êtes disponible ou intéressé.\nor email: contact@example.com\n\n#AIEngineer \n#GCP \n#Neo4j \n#GenAI \n#Python \n#RAG \n#GraphRAG \n#KnowledgeGraph \n#Freelance \n#MissionFreelance #Paris",
+      "expected_company": null,
+      "expected_title": "AI Engineer GCP / Neo4j / GenAI",
+      "expected_location": "Paris",
+      "expected_contract": "freelance",
+      "expected_remote": "hybrid",
+      "expected_stack": [
+        "python",
+        "gcp",
+        "neo4j",
+        "cypher",
+        "rag",
+        "graphrag",
+        "genai"
+      ],
+      "expected_tjm": null,
+      "expected_salary": null
+    },
+    {
+      "raw_post_id": "7471100307360550912",
+      "post_content": "🖐 Wanted ! 👉 en CDI ou freelance, je cherche un(e) **AI Platform Engineer** pour mon équipe chez Édifice, la plateforme pédagogique n°1 en France.\n\n🎯 La mission : développer et déployer des services d'IA générative (LLMs, RAG, agents) au cœur d'une plateforme utilisée chaque jour par des millions de personnes (enseignants, élèves, parents, personnels d’établissement)\n\n👤 Le profil idéal : quelqu'un qui sait autant coder en Python que déployer ses services IA sur Kubernetes ! Vous êtes un développeur full stack ayant évolué vers l’IA générative avec de bonnes connaissances k8s, ou vous êtes un AI engineer de souche avec une expérience prouvée dans le déploiement de solutions at scale ? Nous voulons vous rencontrer !\n\nLe poste est ouvert en CDI ou en freelance pour un démarrage ASAP.\nL'annonce complète est dans les commentaires.\nMerci de partager ! \n\n#Recrutement #AIEngineer #LLM #GenAI #Python #Kubernetes #MLOps #LLMOps #AIOps #SouverainetéNumérique #EdTech #Emploi #CDI #Freelance #Paris",
+      "expected_company": "Édifice",
+      "expected_title": "AI Platform Engineer",
+      "expected_location": "Paris",
+      "expected_contract": "unknown",
+      "expected_remote": "unknown",
+      "expected_stack": [
+        "python",
+        "kubernetes",
+        "llm",
+        "rag",
+        "genai",
+        "mlops"
+      ],
+      "expected_tjm": null,
+      "expected_salary": null
+    },
+    {
+      "raw_post_id": "7470390856001331200",
+      "post_content": "We're hiring a freelance Back-End Engineer at Elaia. 🛠️\n\nWe're working on the first layer of our data infrastructure, the single source of truth that consolidates portfolio and fund data across our systems (CRM, portfolio management, fund accounting, banking/cash flow, ...).\n\nIt's designed to be queried by internal teams, with strict access control enforced at the data layer.\n\nWhat the mission covers: \n→ Connecting heterogeneous sources into one governed repository \n→ Defining ingestion, versioning, and storage rules (raw / staging / certified marts) \n→ Implementing ACLs that hold up even for agent-based queries \n→ Building fund-level financial calculations (DPI, TVPI, IRR gross/net, MOIC, J-curve, NAV, carry, management fees…) \n→ Exposing a clean, documented, queryable data layer\n\nWhat we're looking for: \nStrong SQL + Python, cloud infrastructure, a modern transformation layer (dbt or equivalent), real experience designing RBAC/ACL at the database level, and comfort building production-grade products with coding agents. \nUnderstanding of VC/PE fund mechanics is a serious plus.\n\nThe details:\nfreelance / mission-based, Phase 1 of a broader platform project, near-term start, based in Paris. \n\nInterested? Send me a DM directly. 📩\n\nAnd if this isn't for you but you know the right person, please tag them in the comments or share.",
+      "expected_company": "Elaia",
+      "expected_title": "Back-End Engineer",
+      "expected_location": "Paris",
+      "expected_contract": "freelance",
+      "expected_remote": "unknown",
+      "expected_stack": [
+        "python",
+        "sql",
+        "dbt"
+      ],
+      "expected_tjm": null,
+      "expected_salary": null
+    },
+    {
+      "raw_post_id": "7470780595401375744",
+      "post_content": "🚀 Mission freelance - Senior AI Engineer - Full Remote\n\nJe recherche des Senior AI Engineers capables de construire et déployer des solutions IA en production, au sein d'une équipe d'ingénieurs intervenant sur des projets variés (santé, finance, industrie, énergie...).\n\n🔧 Stack : Python · GenAI · LLM · RAG · LangChain · LlamaIndex · PyTorch · TensorFlow · AWS · GCP · Docker · Kubernetes · CI/CD\n\n📍 Full Remote (Hybride possible sur Paris, Lyon, Marseille, Barcelone)\n💼 Mission longue durée\n💰 Selon profil & expérience\n\nJe recherche avant tout un profil Software Engineer avec une forte expertise IA : quelqu'un capable de prendre un sujet de A à Z, de la conception jusqu'à la mise en production.\n\n📩 Écrivez-moi en MP ou postulez sur le lien en commentaire !",
+      "expected_company": null,
+      "expected_title": "Senior AI Engineer",
+      "expected_location": null,
+      "expected_contract": "freelance",
+      "expected_remote": "full_remote",
+      "expected_stack": [
+        "python",
+        "genai",
+        "llm",
+        "rag",
+        "langchain",
+        "llamaindex",
+        "pytorch",
+        "tensorflow",
+        "aws",
+        "gcp",
+        "docker",
+        "kubernetes",
+        "ci/cd"
+      ],
+      "expected_tjm": null,
+      "expected_salary": null
+    },
+    {
+      "raw_post_id": "7470423002564780032",
+      "post_content": "🚨 URGENT recherche Freelance / Paris / Disponible ASAP\n\nNous recherchons un expert Python backend avec une vraie expérience en IA générative. 🎯\n\nUn profil qui sait construire des systèmes qui tiennent en production.\n\nCe que le poste demande concrètement :\n\n🔧 FastAPI, architectures distribuées, services asynchrones. \n🤖 LangChain, LangGraph, Pydantic AI pour l'orchestration d'agents. \n🛡 Gestion des erreurs, retries, circuit breakers, observabilité. \n🗄 SQL solide, PostgreSQL, intégration d'APIs tierces. \n🚀 Docker, CI/CD, tests automatisés.\n\nSur la partie IA : expérience RAG, prompting, agents multi-étapes.\n\nCe n'est pas un poste pour quelqu'un qui veut apprendre sur le tas. \nC'est pour quelqu'un qui a déjà livré des systèmes robustes dans des environnements exigeants.\n\nEnvoyez moi un MP si vous êtes la bonne personne. \nsi Vous connaissez le bon profil ? Mentionnez-le ou partagez ce post. 🙏 \n\n#Python #BackendDeveloper #IAGenerative #Freelance #Paris",
+      "expected_company": null,
+      "expected_title": "Expert Python Backend / IA Générative",
+      "expected_location": "Paris",
+      "expected_contract": "freelance",
+      "expected_remote": "unknown",
+      "expected_stack": [
+        "python",
+        "fastapi",
+        "langchain",
+        "langgraph",
+        "postgresql",
+        "docker",
+        "sql",
+        "ci/cd",
+        "rag",
+        "pydantic"
+      ],
+      "expected_tjm": null,
+      "expected_salary": null
+    },
+    {
+      "raw_post_id": "7470780910272131072",
+      "post_content": "Je recrute un(e) Data Engineer (Python / AWS) pour restructurer de A à Z l'infrastructure d'une app mobile B2C (Nutrition / Bien-être).\n\nLe contexte : \n👨🏻‍🌾 1 million d'utilisateurs actifs par mois. \n📉 Le CMO a construit les premiers scripts il y a 4 ans. Avec les enjeux de scale, l'infrastructure sature. \n🛠️ En direct avec le CTO et le CMO, tu auras carte blanche pour concevoir une vraie plateforme data moderne.\n\nLe scope : \n• Centraliser les flux des grosses régies pub (Meta, TikTok...) et d'attribution (AppsFlyer)\n• Traiter les volumes massifs de données brutes d'usage (via Amplitude) sur un Data Lake AWS \n• Coder en Python pour automatiser et alimenter les dashboards de performance\n\nTon profil : \n• 4-5 ans d'exp en Data Engineering (Python / AWS)\n• Une expérience sur une app mobile B2C à forte volumétrie (la maîtrise d'Amplitude et des MMP est un gros plus)\n\nCe que l'on propose : \n💼 Contrat au choix : CDI ou Freelance\n🌍 Full remote possible (ou présence flexible dans des super bureaux à Paris Bastille)\n\nJe te laisse me contacter en DM pour que je puisse t'en dire plus sur le projet et en discuter en détail 👋🏻\n\n(Et comme d'habitude, si ce n'est pas pour toi mais que tu connais le profil idéal, n'hésite pas à partager !)",
+      "expected_company": null,
+      "expected_title": "Data Engineer (Python / AWS)",
+      "expected_location": "Paris",
+      "expected_contract": "unknown",
+      "expected_remote": "unknown",
+      "expected_stack": [
+        "python",
+        "aws",
+        "amplitude",
+        "appsflyer"
+      ],
+      "expected_tjm": null,
+      "expected_salary": null
+    },
+    {
+      "raw_post_id": "7471212364554731520",
+      "post_content": "URGENT / 2 Data Engineers Python / Apache Airflow pour une mission longue durée à Paris.\nDémarrage : Septembre 2026\nTélétravail : Hybride\nMission longue\nFreelance ou portage\nProfils recherchés :\n• Data Engineer  (5 à 8 ans d'expérience)\nTJM : 500 / 550 €\n• Data Engineer (8 ans et +)\nTJM : 600/650 €\nVos missions :\n• Développer et industrialiser des pipelines de données Python\n• Concevoir et maintenir des DAGs Apache Airflow\n• Mettre en place des processus d'ingestion depuis API, bases de données, fichiers plats et SFTP\n• Participer à la migration de traitements existants vers une architecture Python / Airflow\n• Optimiser les performances et la fiabilité des flux de données\n• Participer à l'amélioration de l'architecture Data\n• Mettre en œuvre les bonnes pratiques de développement (Git, CI/CD, tests unitaires)\nCompétences attendues :\n• Python avancé\n• Apache Airflow\n• SQL\n• Pandas\n• SQLAlchemy\n• ETL / ELT\n• Git\n• CI/CD\n• APIs REST\n• SFTP\nLes plus :\n• Tableau Prep\n• Tableau Server\n• Databricks\n• PySpark\n• Docker\n• Kubernetes\n• AWS, Azure ou GCP\nVous avez déjà participé à des projets de migration et d'industrialisation de pipelines Data ? N'hésitez pas à me contacter en message privé",
+      "expected_company": null,
+      "expected_title": "Data Engineer Python / Apache Airflow",
+      "expected_location": "Paris",
+      "expected_contract": "freelance",
+      "expected_remote": "hybrid",
+      "expected_stack": [
+        "python",
+        "airflow",
+        "sql",
+        "pandas",
+        "sqlalchemy",
+        "git",
+        "ci/cd",
+        "sftp",
+        "tableau",
+        "databricks",
+        "pyspark",
+        "docker",
+        "kubernetes",
+        "aws",
+        "azure",
+        "gcp"
+      ],
+      "expected_tjm": null,
+      "expected_salary": null
+    },
+    {
+      "raw_post_id": "7470791024144072705",
+      "post_content": "Bonjour à tous,\n\nJe recherche pour un contact un Data Analyst CRM – CDD / Freelance à Paris.\n\nProfil recherché : Data Analyst CRM\nPriorité : maîtrise du SQL & bonne connaissance de Python, esprit analytique\nFort(s) plus : maitrise d’un ou plusieurs outils de data visualisation (PowerBI, Looker Studio) / connaissances en web analyse (Google Analytics, Piano Analytics etc.) / expérience sur un outil de marketing automation / compétences en data science (modélisation, scoring)\nMission : ciblage CRM, analyses & reco, dashboards\n\n\n#DataAnalyst #CRM #SQL #Python #PowerBI #DataScience #Freelance #CDD #Paris #Recrutement",
+      "expected_company": null,
+      "expected_title": "Data Analyst CRM",
+      "expected_location": "Paris",
+      "expected_contract": "unknown",
+      "expected_remote": "unknown",
+      "expected_stack": [
+        "sql",
+        "python",
+        "powerbi",
+        "looker studio",
+        "google analytics",
+        "piano analytics"
+      ],
+      "expected_tjm": null,
+      "expected_salary": null
+    }
+  ]
+}

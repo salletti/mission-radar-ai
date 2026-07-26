@@ -1,0 +1,84 @@
+<tr>
+  <td style="padding:16px 32px;">
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0"
+           style="border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;">
+      <tr>
+        <td style="padding:16px;">
+
+          {# Title row + score badge #}
+          <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tr>
+              <td style="vertical-align:top;">
+                {% if mission.title %}
+                <p style="margin:0 0 2px;font-size:15px;font-weight:bold;color:#111827;">
+                  {{ mission.title }}
+                </p>
+                {% endif %}
+                {% if mission.company %}
+                <p style="margin:0;font-size:13px;color:#6b7280;">{{ mission.company }}</p>
+                {% endif %}
+              </td>
+              <td align="right" style="vertical-align:top;white-space:nowrap;padding-left:8px;">
+                {% include "components/score_badge.html.j2" %}
+              </td>
+            </tr>
+          </table>
+
+          {# Summary #}
+          <p style="margin:10px 0 0;font-size:13px;color:#374151;line-height:1.5;">
+            {{ mission.summary[:280] }}{% if mission.summary|length > 280 %}…{% endif %}
+          </p>
+
+          {# Meta row: remote + TJM #}
+          <table role="presentation" cellspacing="0" cellpadding="0" border="0"
+                 style="margin-top:10px;">
+            <tr>
+              {% if mission.detected_remote_mode and mission.detected_remote_mode != 'unknown' %}
+              <td style="padding-right:12px;">
+                <span style="font-size:12px;color:#6b7280;">
+                  📍
+                  {% if mission.detected_remote_mode == 'full_remote' %}Full remote
+                  {% elif mission.detected_remote_mode == 'hybrid' %}Hybride
+                  {% elif mission.detected_remote_mode == 'onsite' %}Sur site
+                  {% else %}{{ mission.detected_remote_mode }}{% endif %}
+                </span>
+              </td>
+              {% endif %}
+              {% if mission.detected_tjm %}
+              <td style="padding-right:12px;">
+                <span style="font-size:12px;color:#6b7280;">💶 {{ mission.detected_tjm | int }}€/j</span>
+              </td>
+              {% endif %}
+            </tr>
+          </table>
+
+          {# Stack pills #}
+          {% if mission.detected_stack %}
+          <p style="margin:10px 0 0;">
+            {% for tech in mission.detected_stack[:6] %}
+            <span style="display:inline-block;margin:2px 3px 2px 0;padding:2px 8px;
+                         border-radius:4px;font-size:11px;background-color:#ede9fe;color:#5b21b6;">
+              {{ tech }}
+            </span>
+            {% endfor %}
+            {% if mission.detected_stack|length > 6 %}
+            <span style="font-size:11px;color:#9ca3af;">+{{ mission.detected_stack|length - 6 }}</span>
+            {% endif %}
+          </p>
+          {% endif %}
+
+          {# CTA #}
+          {% if mission.post_url %}
+          <p style="margin:12px 0 0;">
+            <a href="{{ mission.post_url }}"
+               style="font-size:13px;color:#4f46e5;text-decoration:none;font-weight:bold;">
+              Voir le post LinkedIn →
+            </a>
+          </p>
+          {% endif %}
+
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>

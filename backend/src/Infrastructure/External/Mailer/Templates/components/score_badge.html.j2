@@ -1,0 +1,15 @@
+{% set score_pct = (mission.final_score * 100) | round | int %}
+{% if mission.final_score >= 0.8 %}
+  {% set badge_bg = '#dcfce7' %}
+  {% set badge_color = '#15803d' %}
+{% elif mission.final_score >= 0.6 %}
+  {% set badge_bg = '#fef9c3' %}
+  {% set badge_color = '#a16207' %}
+{% else %}
+  {% set badge_bg = '#f3f4f6' %}
+  {% set badge_color = '#4b5563' %}
+{% endif %}
+<span style="display:inline-block;padding:2px 8px;border-radius:12px;font-size:12px;
+             font-weight:bold;background-color:{{ badge_bg }};color:{{ badge_color }};">
+  {{ score_pct }}% match
+</span>

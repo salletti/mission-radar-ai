@@ -25,12 +25,6 @@ const titleStyle: React.CSSProperties = {
   fontSize: "1.875rem",
   fontWeight: 800,
   color: "#111827",
-  margin: "0 0 0.375rem",
-};
-
-const subtitleStyle: React.CSSProperties = {
-  fontSize: "0.9375rem",
-  color: "#6b7280",
   margin: "0 0 1.5rem",
 };
 
@@ -95,10 +89,6 @@ export default function LoginPage() {
     <div style={pageStyle}>
       <div style={cardStyle}>
         <h1 style={titleStyle}>Authentification Auth0</h1>
-        <p style={subtitleStyle}>
-          Phase 10.4.2 — vérifie la connexion et l'obtention d'un access
-          token ; la résolution du profil côté backend arrive en 10.4.4.
-        </p>
 
         {error && <p style={errorStyle}>{error.message}</p>}
 

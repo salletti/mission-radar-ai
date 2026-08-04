@@ -14,6 +14,7 @@ from src.Domain.Entity.user_profile import UserProfile
 from src.Domain.Repository.analyzed_post_repository import AnalyzedPostRepository
 from src.Domain.Repository.mission_match_repository import MissionMatchRepository
 from src.Domain.Repository.raw_post_repository import RawPostRepository
+from src.Domain.Repository.sent_mission_repository import SentMissionRepository
 from src.Domain.Repository.user_profile_repository import UserProfileRepository
 from src.Domain.Service.digest_generator import DigestGenerator
 from src.Domain.Service.digest_mission_selector import DigestMissionSelector
@@ -178,6 +179,17 @@ class FakeRawPostRepository(RawPostRepository):
         return [self._posts[i] for i in ids if i in self._posts]
 
 
+class FakeSentMissionRepository(SentMissionRepository):
+    def __init__(self, sent: set[tuple[UUID, UUID]] | None = None) -> None:
+        self._sent = sent or set()
+
+    async def find_sent_analyzed_post_ids(self, user_id: UUID) -> set[UUID]:
+        return {ap_id for (uid, ap_id) in self._sent if uid == user_id}
+
+    async def save_many(self, user_id: UUID, analyzed_post_ids: list[UUID], sent_at: datetime) -> None:
+        self._sent.update((user_id, ap_id) for ap_id in analyzed_post_ids)
+
+
 class _FakeRawPost:
     """Minimal stub — only post_url is accessed by GenerateDigest."""
 
@@ -191,6 +203,7 @@ def _make_use_case(
     matches: list[MissionMatch] | None = None,
     analyzed_posts: list[AnalyzedPost] | None = None,
     raw_posts: dict[UUID, _FakeRawPost] | None = None,
+    sent: set[tuple[UUID, UUID]] | None = None,
 ) -> GenerateDigest:
     return GenerateDigest(
         user_profile_repository=FakeUserProfileRepository(user),
@@ -199,6 +212,7 @@ def _make_use_case(
         raw_post_repository=FakeRawPostRepository(raw_posts),  # type: ignore[arg-type]
         selector=DigestMissionSelector(),
         generator=DigestGenerator(),
+        sent_mission_repository=FakeSentMissionRepository(sent),
     )
 
 
@@ -357,3 +371,85 @@ async def test_subject_reflects_mission_count():
 
     assert "1" in digest.subject
     assert "mission" in digest.subject.lower()
+
+
+# ---------------------------------------------------------------------------
+# Exclusion des missions déjà envoyées
+# ---------------------------------------------------------------------------
+
+
+async def test_excludes_previously_sent_missions_from_digest():
+    user_id = uuid4()
+    user = _make_user(user_id)
+
+    analyzed_a = _make_analyzed()
+    analyzed_b = _make_analyzed()
+    raw_posts = {
+        analyzed_a.raw_post_id: _FakeRawPost(analyzed_a.raw_post_id),
+        analyzed_b.raw_post_id: _FakeRawPost(analyzed_b.raw_post_id),
+    }
+    matches = [
+        _make_match(score=0.9, analyzed_post_id=analyzed_a.id),
+        _make_match(score=0.7, analyzed_post_id=analyzed_b.id),
+    ]
+
+    uc = _make_use_case(
+        user=user,
+        matches=matches,
+        analyzed_posts=[analyzed_a, analyzed_b],
+        raw_posts=raw_posts,
+        sent={(user_id, analyzed_a.id)},
+    )
+    digest = await uc.execute(user_id)
+
+    assert digest.mission_count == 1
+    assert digest.missions[0].analyzed_post_id == analyzed_b.id
+
+
+async def test_top_n_recomputed_after_exclusion():
+    user_id = uuid4()
+    user = _make_user(user_id)
+
+    analyzed_posts = [_make_analyzed() for _ in range(12)]
+    raw_posts = {ap.raw_post_id: _FakeRawPost(ap.raw_post_id) for ap in analyzed_posts}
+    matches = [
+        _make_match(score=round(0.9 - i * 0.05, 2), analyzed_post_id=ap.id)
+        for i, ap in enumerate(analyzed_posts)
+    ]
+    # Exclut les 3 mieux scorées (les 3 premières, déjà envoyées lors d'un digest précédent)
+    sent = {(user_id, ap.id) for ap in analyzed_posts[:3]}
+
+    uc = _make_use_case(
+        user=user,
+        matches=matches,
+        analyzed_posts=analyzed_posts,
+        raw_posts=raw_posts,
+        sent=sent,
+    )
+    digest = await uc.execute(user_id)
+
+    excluded_ids = {ap.id for ap in analyzed_posts[:3]}
+    assert digest.mission_count == 9
+    assert all(dm.analyzed_post_id not in excluded_ids for dm in digest.missions)
+    result_scores = [dm.final_score for dm in digest.missions]
+    assert result_scores == sorted(result_scores, reverse=True)
+
+
+async def test_no_regression_when_no_sent_missions():
+    user_id = uuid4()
+    user = _make_user(user_id)
+    analyzed = _make_analyzed()
+    raw_post_id = analyzed.raw_post_id
+    raw = _FakeRawPost(raw_post_id)
+    match = _make_match(score=0.9, analyzed_post_id=analyzed.id)
+
+    uc = _make_use_case(
+        user=user,
+        matches=[match],
+        analyzed_posts=[analyzed],
+        raw_posts={raw_post_id: raw},
+        sent=set(),
+    )
+    digest = await uc.execute(user_id)
+
+    assert digest.mission_count == 1

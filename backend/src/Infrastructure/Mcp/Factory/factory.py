@@ -50,6 +50,7 @@ from src.Infrastructure.Persistence.Repository.mission_match_repository import S
 from src.Infrastructure.Persistence.Repository.pipeline_run_repository import SqlAlchemyPipelineRunRepository
 from src.Infrastructure.Persistence.Repository.raw_post_repository import SqlAlchemyRawPostRepository
 from src.Infrastructure.Persistence.Repository.search_query_repository import SqlAlchemySearchQueryRepository
+from src.Infrastructure.Persistence.Repository.sent_mission_repository import SqlAlchemySentMissionRepository
 from src.Infrastructure.Persistence.Repository.user_profile_repository import SqlAlchemyUserProfileRepository
 from src.Infrastructure.Worker.dispatchers.celery_pipeline_dispatcher import CeleryPipelineDispatcher
 
@@ -237,6 +238,7 @@ def _register_tools(mcp: FastMCP, identity_resolver: IdentityResolverFactory) ->
                 raw_post_repository=SqlAlchemyRawPostRepository(session),
                 selector=DigestMissionSelector(),
                 generator=DigestGenerator(),
+                sent_mission_repository=SqlAlchemySentMissionRepository(session),
             )
             send_digest_now_uc = SendDigestNow(
                 digest_assembler=digest_assembler,
@@ -247,6 +249,7 @@ def _register_tools(mcp: FastMCP, identity_resolver: IdentityResolverFactory) ->
                     from_name=settings.MAIL_FROM_NAME,
                 ),
                 digest_history_repository=SqlAlchemyDigestHistoryRepository(session),
+                sent_mission_repository=SqlAlchemySentMissionRepository(session),
             )
             tool = SendDigestNowTool(identity_resolver=identity_resolver(), send_digest_now=send_digest_now_uc)
             try:

@@ -115,3 +115,45 @@ class TestDigestMissionSelectorTopN:
 
     def test_top_missions_constant_is_10(self):
         assert TOP_MISSIONS == 10
+
+
+# ---------------------------------------------------------------------------
+# Tests — exclusion of already-sent missions
+# ---------------------------------------------------------------------------
+
+
+class TestDigestMissionSelectorExclusion:
+    def test_excluded_match_is_removed_from_result(self):
+        keep = _make_match(semantic_score=0.5)
+        excluded = _make_match(semantic_score=0.9)
+
+        result = _selector().select(
+            [keep, excluded],
+            excluded_analyzed_post_ids=frozenset({excluded.analyzed_post_id}),
+        )
+
+        assert result == [keep]
+
+    def test_all_matches_excluded_returns_empty_list(self):
+        matches = [_make_match() for _ in range(3)]
+        excluded_ids = frozenset(m.analyzed_post_id for m in matches)
+
+        result = _selector().select(matches, excluded_analyzed_post_ids=excluded_ids)
+
+        assert result == []
+
+    def test_top_n_recomputed_after_exclusion(self):
+        matches = [_make_match(semantic_score=0.9 - i * 0.05) for i in range(12)]
+        excluded_ids = frozenset(m.analyzed_post_id for m in matches[:3])
+
+        result = _selector().select(matches, excluded_analyzed_post_ids=excluded_ids)
+
+        assert len(result) == 9
+        assert all(m.analyzed_post_id not in excluded_ids for m in result)
+        result_scores = [m.final_score for m in result]
+        assert result_scores == sorted(result_scores, reverse=True)
+
+    def test_default_excluded_set_is_empty_and_preserves_existing_behavior(self):
+        matches = [_make_match(semantic_score=0.9 - i * 0.1) for i in range(5)]
+        result = _selector().select(matches)
+        assert len(result) == 5

@@ -7,6 +7,7 @@ from src.Domain.Entity.raw_post import RawPost
 from src.Domain.Repository.analyzed_post_repository import AnalyzedPostRepository
 from src.Domain.Repository.mission_match_repository import MissionMatchRepository
 from src.Domain.Repository.raw_post_repository import RawPostRepository
+from src.Domain.Repository.sent_mission_repository import SentMissionRepository
 from src.Domain.Repository.user_profile_repository import UserProfileRepository
 from src.Domain.Service.digest_generator import DigestGenerator
 from src.Domain.Service.digest_mission_selector import DigestMissionSelector
@@ -28,6 +29,7 @@ class DigestAssembler:
         raw_post_repository: RawPostRepository,
         selector: DigestMissionSelector,
         generator: DigestGenerator,
+        sent_mission_repository: SentMissionRepository,
     ) -> None:
         self._user_profile_repository = user_profile_repository
         self._mission_match_repository = mission_match_repository
@@ -35,6 +37,7 @@ class DigestAssembler:
         self._raw_post_repository = raw_post_repository
         self._selector = selector
         self._generator = generator
+        self._sent_mission_repository = sent_mission_repository
 
     async def assemble(self, user_id: UUID) -> DigestEmail:
         user = await self._user_profile_repository.get_by_id(user_id)
@@ -42,7 +45,8 @@ class DigestAssembler:
             raise UserProfileNotFoundError(f"UserProfile {user_id} not found")
 
         matches = await self._mission_match_repository.get_by_user(user_id)
-        selected = self._selector.select(matches)
+        excluded = await self._sent_mission_repository.find_sent_analyzed_post_ids(user_id)
+        selected = self._selector.select(matches, excluded_analyzed_post_ids=frozenset(excluded))
 
         if not selected:
             return self._generator.generate(user, [])

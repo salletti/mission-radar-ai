@@ -5,6 +5,7 @@ from src.Domain.Entity.digest_email import DigestEmail
 from src.Domain.Repository.analyzed_post_repository import AnalyzedPostRepository
 from src.Domain.Repository.mission_match_repository import MissionMatchRepository
 from src.Domain.Repository.raw_post_repository import RawPostRepository
+from src.Domain.Repository.sent_mission_repository import SentMissionRepository
 from src.Domain.Repository.user_profile_repository import UserProfileRepository
 from src.Domain.Service.digest_generator import DigestGenerator
 from src.Domain.Service.digest_mission_selector import DigestMissionSelector
@@ -25,6 +26,7 @@ class GenerateDigest:
         raw_post_repository: RawPostRepository,
         selector: DigestMissionSelector,
         generator: DigestGenerator,
+        sent_mission_repository: SentMissionRepository,
     ) -> None:
         self._assembler = DigestAssembler(
             user_profile_repository=user_profile_repository,
@@ -33,6 +35,7 @@ class GenerateDigest:
             raw_post_repository=raw_post_repository,
             selector=selector,
             generator=generator,
+            sent_mission_repository=sent_mission_repository,
         )
 
     async def execute(self, user_id: UUID) -> DigestEmail:

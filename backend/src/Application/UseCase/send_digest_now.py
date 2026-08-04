@@ -7,6 +7,7 @@ from src.Application.Gateway.mailer_gateway import MailerGateway
 from src.Application.UseCase.digest_assembler import DigestAssembler
 from src.Domain.Entity.digest_history import DigestHistory, DigestStatus
 from src.Domain.Repository.digest_history_repository import DigestHistoryRepository
+from src.Domain.Repository.sent_mission_repository import SentMissionRepository
 
 
 class SendDigestNow:
@@ -28,11 +29,13 @@ class SendDigestNow:
         renderer: EmailTemplateRendererGateway,
         mailer: MailerGateway,
         digest_history_repository: DigestHistoryRepository,
+        sent_mission_repository: SentMissionRepository,
     ) -> None:
         self._digest_assembler = digest_assembler
         self._renderer = renderer
         self._mailer = mailer
         self._digest_history_repository = digest_history_repository
+        self._sent_mission_repository = sent_mission_repository
 
     async def execute(self, user_id: UUID) -> SendDigestNowResult:
         digest = await self._digest_assembler.assemble(user_id)
@@ -48,12 +51,20 @@ class SendDigestNow:
             error_message = str(exc)
 
         missions_count = digest.mission_count if status == DigestStatus.SENT else 0
+        sent_at = datetime.now(timezone.utc)
+
+        if status == DigestStatus.SENT and digest.missions:
+            await self._sent_mission_repository.save_many(
+                user_id,
+                [m.analyzed_post_id for m in digest.missions],
+                sent_at,
+            )
 
         await self._digest_history_repository.save(
             DigestHistory(
                 user_id=user_id,
                 pipeline_run_id=None,
-                sent_at=datetime.now(timezone.utc),
+                sent_at=sent_at,
                 status=status,
                 missions_count=missions_count,
                 provider_message_id=provider_message_id,

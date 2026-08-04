@@ -244,6 +244,7 @@ async def _match_step(pipeline_run_id: UUID, user_id: UUID) -> None:
 async def _digest_step(pipeline_run_id: UUID, user_id: UUID) -> bool:
     from src.Domain.Entity.digest_history import DigestHistory, DigestStatus
     from src.Infrastructure.Persistence.Repository.digest_history_repository import SqlAlchemyDigestHistoryRepository
+    from src.Infrastructure.Persistence.Repository.sent_mission_repository import SqlAlchemySentMissionRepository
 
     async with AsyncSessionLocal() as session:
         digest = await GenerateDigest(
@@ -253,6 +254,7 @@ async def _digest_step(pipeline_run_id: UUID, user_id: UUID) -> bool:
             raw_post_repository=SqlAlchemyRawPostRepository(session),
             selector=DigestMissionSelector(),
             generator=DigestGenerator(),
+            sent_mission_repository=SqlAlchemySentMissionRepository(session),
         ).execute(user_id)
 
     missions_count = digest.mission_count
@@ -285,6 +287,12 @@ async def _digest_step(pipeline_run_id: UUID, user_id: UUID) -> bool:
     )
 
     async with AsyncSessionLocal() as session:
+        if status == DigestStatus.SENT and digest.missions:
+            await SqlAlchemySentMissionRepository(session).save_many(
+                user_id,
+                [m.analyzed_post_id for m in digest.missions],
+                history.sent_at,
+            )
         await SqlAlchemyDigestHistoryRepository(session).save(history)
         await session.commit()
 

@@ -18,6 +18,7 @@ from src.Domain.Repository.analyzed_post_repository import AnalyzedPostRepositor
 from src.Domain.Repository.digest_history_repository import DigestHistoryRepository
 from src.Domain.Repository.mission_match_repository import MissionMatchRepository
 from src.Domain.Repository.raw_post_repository import RawPostRepository
+from src.Domain.Repository.sent_mission_repository import SentMissionRepository
 from src.Domain.Repository.user_profile_repository import UserProfileRepository
 from src.Domain.Service.digest_generator import DigestGenerator
 from src.Domain.Service.digest_mission_selector import DigestMissionSelector
@@ -109,6 +110,13 @@ class FakeDigestHistoryRepository(DigestHistoryRepository):
         return [h for h in self.saved if h.user_id == user_id]
 
 
+class FakeSentMissionRepository(SentMissionRepository):
+    async def find_sent_analyzed_post_ids(self, user_id: UUID) -> set[UUID]:
+        return set()
+
+    async def save_many(self, user_id: UUID, analyzed_post_ids: list[UUID], sent_at: datetime) -> None: ...
+
+
 class FakeIdentityResolver(IdentityResolver):
     def __init__(self, user_profile_id: UUID) -> None:
         self._user_profile_id = user_profile_id
@@ -140,12 +148,14 @@ def _make_tool(user_id: UUID, user: Optional[UserProfile]) -> SendDigestNowTool:
         raw_post_repository=FakeRawPostRepository({}),
         selector=DigestMissionSelector(),
         generator=DigestGenerator(),
+        sent_mission_repository=FakeSentMissionRepository(),
     )
     send_digest_now = SendDigestNow(
         digest_assembler=assembler,
         renderer=FakeRenderer(),
         mailer=FakeMailer(),
         digest_history_repository=FakeDigestHistoryRepository(),
+        sent_mission_repository=FakeSentMissionRepository(),
     )
     return SendDigestNowTool(identity_resolver=FakeIdentityResolver(user_id), send_digest_now=send_digest_now)
 

@@ -69,6 +69,38 @@ def test_prompt_contains_json_only_instruction() -> None:
 
 
 # ---------------------------------------------------------------------------
+# Distinction offre vs recherche de mission (is_job_offer)
+# ---------------------------------------------------------------------------
+
+
+def test_prompt_contains_is_job_offer_recruiter_rule() -> None:
+    prompt = build_analyze_post_prompt(_make_raw_post())
+    assert "PROPOSE une mission" in prompt
+
+
+def test_prompt_contains_is_job_offer_freelance_seeking_rule() -> None:
+    prompt = build_analyze_post_prompt(_make_raw_post())
+    assert "CHERCHE une mission" in prompt
+
+
+def test_prompt_contains_freelance_seeking_example() -> None:
+    prompt = build_analyze_post_prompt(_make_raw_post())
+    assert "disponible pour ma prochaine mission freelance" in prompt
+    assert "false (le freelance cherche)" in prompt
+
+
+def test_prompt_contains_open_to_work_example() -> None:
+    prompt = build_analyze_post_prompt(_make_raw_post())
+    assert "Open to work" in prompt
+
+
+def test_prompt_contains_recruiter_offer_example() -> None:
+    prompt = build_analyze_post_prompt(_make_raw_post())
+    assert "Nous recherchons pour notre client un développeur freelance" in prompt
+    assert "true (le recruteur propose)" in prompt
+
+
+# ---------------------------------------------------------------------------
 # Injection du RawPost
 # ---------------------------------------------------------------------------
 

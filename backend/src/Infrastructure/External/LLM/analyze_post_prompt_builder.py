@@ -13,7 +13,7 @@ Utilise null pour tout champ absent ou indéterminable. Ne jamais inventer d'inf
 
 JSON schema attendu :
 {
-  "is_job_offer": <boolean — true si le post propose une mission ou un emploi, false sinon>,
+  "is_job_offer": <boolean — true UNIQUEMENT si l'auteur du post propose une mission à pourvoir à un tiers, false si l'auteur cherche une mission pour lui-même>,
   "title": "<string | null — intitulé du poste ou de la mission>",
   "company": "<string | null — nom de l'entreprise ou du client final>",
   "location": "<string | null — ville ou région>",
@@ -27,11 +27,17 @@ JSON schema attendu :
 }
 
 Règles :
-- is_job_offer : true uniquement si le post propose clairement une offre d'emploi, une mission ou un recrutement actif
+- is_job_offer : true uniquement si l'auteur est un recruteur, un client ou un cabinet qui PROPOSE une mission/un poste à un tiers
+- is_job_offer : false si l'auteur est un freelance/développeur qui CHERCHE une mission, ANNONCE sa disponibilité, ou fait la promotion de ses propres services
 - required_skills : compétences explicitement requises ou obligatoires uniquement
 - nice_to_have_skills : compétences souhaitées, un plus, ou optionnelles uniquement
 - summary : 1-2 phrases maximum, centrées sur le rôle et le contexte principal
 - Ne jamais remplir un champ avec une valeur inventée ou déduite par extrapolation\
+
+Exemples de distinction is_job_offer :
+- "Je suis disponible pour ma prochaine mission freelance à partir de septembre." → false (le freelance cherche)
+- "Open to work : dev Python senior, 5 ans d'XP, dispo immédiatement." → false (le freelance cherche)
+- "Nous recherchons pour notre client un développeur freelance Python/FastAPI." → true (le recruteur propose)\
 """
 
 

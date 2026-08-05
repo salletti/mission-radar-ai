@@ -9,10 +9,10 @@ réseau `coolify`, tout le reste sur un réseau interne `app-network`.
 
 | Fichier | Rôle |
 |---|---|
-| `docker-compose.prod.yml` | Compose de production : 7 services (postgres, rabbitmq, redis, backend, celery_worker, celery_beat, frontend), `expose` uniquement + labels Traefik sur `frontend`, healthchecks, `restart: unless-stopped` |
+| `docker-compose.prod.yml` | Compose de production : 8 services (postgres, rabbitmq, redis, migrate, backend, celery_worker, celery_beat, frontend), `expose` uniquement + labels Traefik sur `frontend`, healthchecks, `restart: unless-stopped` |
 | `backend/docker/Dockerfile` | Image prod du backend : pas de `--reload`, dépendances `requirements/base.txt` uniquement (pas les deps dev/lint/test), torch CPU-only pré-installé, modèle d'embedding `all-MiniLM-L6-v2` pré-téléchargé au build, tourne en non-root |
 | `backend/.dockerignore` | Exclut `.env`, tests, caches du contexte de build |
-| `backend/scripts/init_production.sh` | Applique les migrations Alembic — à lancer manuellement après le premier déploiement (voir plus bas, pourquoi ce n'est pas automatique) |
+| `backend/scripts/init_production.sh` | Applique les migrations Alembic — fallback manuel (le service `migrate` s'en charge automatiquement à chaque déploiement, voir plus bas) |
 | `frontend/Dockerfile` | Multi-stage : build Vite (Node 20) puis service Nginx |
 | `frontend/nginx.conf` | Sert le SPA (`try_files ... /index.html`) et reverse-proxy en interne `/api`, `/mcp`, `/.well-known/oauth-protected-resource`, `/docs`, `/openapi.json` vers `backend:8000` |
 | `frontend/.dockerignore` | Exclut `node_modules/`, `dist/` |
@@ -34,11 +34,15 @@ via ce proxy nginx, donc le FastAPI backend n'a jamais besoin d'autoriser une or
 
 ## Ce qui a changé par rapport au dev
 
-- **Migrations non automatiques au démarrage** : `backend`, `celery_worker` et `celery_beat`
-  partagent la même image et démarrent en parallèle (`depends_on` ne garantit pas d'ordre entre
-  eux) ; faire tourner `alembic upgrade head` dans l'entrypoint de chacun créerait une course.
-  À la place, `backend/scripts/init_production.sh` se lance à la main après le déploiement
-  (une fois, puis à chaque déploiement qui ajoute une migration) — depuis le terminal Coolify
+- **Migrations automatiques via un service `migrate` dédié** : `backend`, `celery_worker` et
+  `celery_beat` partagent la même image et démarrent en parallèle (`depends_on` seul ne
+  garantit pas d'ordre entre eux) ; faire tourner `alembic upgrade head` dans l'entrypoint de
+  chacun créerait une course. À la place, `migrate` est un service one-shot (`restart: "no"`)
+  qui lance `alembic upgrade head` puis s'arrête ; `backend`, `celery_worker` et `celery_beat`
+  déclarent `depends_on: migrate: condition: service_completed_successfully`, donc Coolify
+  attend que `migrate` se termine avec succès avant de démarrer les trois autres à chaque
+  déploiement. `backend/scripts/init_production.sh` reste disponible comme fallback manuel
+  (diagnostic, réparation d'un état de migration sans redéployer) — depuis le terminal Coolify
   du service `backend` (déjà dans le conteneur, `WORKDIR /app`) : `bash scripts/init_production.sh`,
   ou depuis l'hôte : `docker compose -f docker-compose.prod.yml exec backend bash scripts/init_production.sh`
 - **Planification Celery Beat persistée** : le fichier de planification vit sur un volume nommé
@@ -98,11 +102,10 @@ sur ce même Traefik/Coolify.
    Variables), avec de vraies valeurs.
 5. Vérifier le DNS Cloudflare de `${DEPLOY_DOMAIN}` vers le VPS.
 6. Lancer le déploiement. Le premier démarrage du backend est plus lent (build inclut le
-   pré-téléchargement du modèle d'embedding).
-7. Appliquer les migrations une fois les conteneurs up — depuis le terminal Coolify du service
-   `backend` : `bash scripts/init_production.sh` (ou depuis l'hôte :
-   `docker compose -f docker-compose.prod.yml exec backend bash scripts/init_production.sh`)
-8. Vérifier :
+   pré-téléchargement du modèle d'embedding). Le service `migrate` applique les migrations
+   Alembic avant que `backend`/`celery_worker`/`celery_beat` ne démarrent — rien à faire à la
+   main (voir `backend/scripts/init_production.sh` en fallback si besoin de diagnostiquer).
+7. Vérifier :
    - `https://${DEPLOY_DOMAIN}/` (SPA)
    - `https://${DEPLOY_DOMAIN}/api/health` via le reverse-proxy interne nginx (Postgres/RabbitMQ/Redis)
    - Connexion Auth0 depuis l'UI (bouton "Se connecter")

@@ -88,6 +88,27 @@ services:
     networks:
       - app-network
 
+  # One-shot job: applies pending Alembic migrations before backend/celery_worker/
+  # celery_beat start. They share the same image and would otherwise start in
+  # parallel with no guaranteed order (depends_on alone doesn't serialize them),
+  # so running `alembic upgrade head` in each entrypoint would race. Routing it
+  # through this single dedicated service, gated with service_completed_successfully,
+  # guarantees the upgrade runs exactly once, to completion, before anything else
+  # touches the schema.
+  migrate:
+    build:
+      context: ./backend
+      dockerfile: docker/Dockerfile
+    command: alembic upgrade head
+    environment:
+      <<: *backend-env
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: "no"
+    networks:
+      - app-network
+
   backend:
     build:
       context: ./backend
@@ -97,8 +118,8 @@ services:
     environment:
       <<: *backend-env
     depends_on:
-      postgres:
-        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
       rabbitmq:
         condition: service_healthy
       redis:
@@ -121,8 +142,8 @@ services:
     environment:
       <<: *backend-env
     depends_on:
-      postgres:
-        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
       rabbitmq:
         condition: service_healthy
       redis:
@@ -143,8 +164,8 @@ services:
     volumes:
       - celery_beat_data:/var/lib/celery
     depends_on:
-      postgres:
-        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
       rabbitmq:
         condition: service_healthy
       redis:

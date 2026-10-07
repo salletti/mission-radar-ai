@@ -192,24 +192,25 @@ async def test_apify_provider_mock_instancie_mock_provider() -> None:
 
 @pytest.mark.asyncio
 async def test_apify_provider_real_instancie_real_provider() -> None:
-    """APIFY_PROVIDER=real → RealApifyProvider instancié avec le token."""
+    """APIFY_PROVIDER=real → provider réel construit avec le token principal et le token de secours."""
     fake_repo = FakeRawPostRepository()
     fake_link_repo = FakeSearchQueryRawPostRepository()
     mock_session_local, _ = _make_session_ctx()
 
     with patch("src.Infrastructure.Worker.tasks.collect_posts_task.settings") as mock_settings, \
-         patch("src.Infrastructure.Worker.tasks.collect_posts_task.RealApifyProvider") as RealCls, \
+         patch("src.Infrastructure.Worker.tasks.collect_posts_task.build_real_posts_provider") as build_provider, \
          patch("src.Infrastructure.Worker.tasks.collect_posts_task.AsyncSessionLocal", mock_session_local), \
          patch("src.Infrastructure.Worker.tasks.collect_posts_task.SqlAlchemyRawPostRepository", return_value=fake_repo), \
          patch("src.Infrastructure.Worker.tasks.collect_posts_task.SqlAlchemySearchQueryRawPostRepository", return_value=fake_link_repo), \
          patch("src.Infrastructure.Worker.tasks.collect_posts_task.celery_app.send_task"):
         mock_settings.APIFY_PROVIDER = "real"
         mock_settings.APIFY_API_TOKEN = "apify_test_token"
-        RealCls.return_value = MagicMock()
-        RealCls.return_value.search_posts = AsyncMock(return_value=[])
+        mock_settings.APIFY_FALLBACK_API_TOKEN = "apify_fallback_token"
+        build_provider.return_value = MagicMock()
+        build_provider.return_value.search_posts = AsyncMock(return_value=[])
         await _collect("python freelance paris", 5, _QUERY_ID)
 
-    RealCls.assert_called_once_with("apify_test_token")
+    build_provider.assert_called_once_with("apify_test_token", "apify_fallback_token")
 
 
 # ---------------------------------------------------------------------------

@@ -22,8 +22,16 @@ class Settings(BaseSettings):
 
     GROQ_API_KEY: str = ""
     LLM_PROVIDER: str = "groq"  # groq | claude
+    # Groq retire régulièrement des modèles (llama-3.3-70b-versatile → 404 en août 2026) :
+    # le modèle se change par variable d'environnement, sans redéploiement de code.
+    GROQ_MODEL: str = "openai/gpt-oss-120b"
     APIFY_API_TOKEN: str = ""
+    # Second compte Apify (optionnel) : utilisé quand le premier a épuisé son quota
+    APIFY_FALLBACK_API_TOKEN: str = ""
     APIFY_PROVIDER: str = "mock"  # mock | real
+    # Plafond de posts scrapés par query et par run, quel que soit SearchQuery.limit —
+    # Apify facture au post et seuls quelques posts sont nouveaux entre deux runs.
+    APIFY_MAX_POSTS_PER_QUERY: int = 20
 
     RESEND_API_KEY: str = ""
     MAIL_FROM: str = "onboarding@resend.dev"

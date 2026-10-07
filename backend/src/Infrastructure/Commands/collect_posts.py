@@ -10,7 +10,7 @@ from src.Infrastructure.Config.database import AsyncSessionLocal
 from src.Infrastructure.Config.settings import settings
 from src.Infrastructure.External.Apify.apify_scraper_gateway import ApifyScraperGateway
 from src.Infrastructure.External.Apify.mock_apify_provider import MockApifyProvider
-from src.Infrastructure.External.Apify.real_apify_provider import RealApifyProvider
+from src.Infrastructure.External.Apify.fallback_posts_provider import build_real_posts_provider
 from src.Infrastructure.Persistence.Repository.raw_post_repository import SqlAlchemyRawPostRepository
 from src.Infrastructure.Persistence.Repository.search_query_raw_post_repository import SqlAlchemySearchQueryRawPostRepository
 
@@ -83,7 +83,7 @@ async def _run(
         sys.exit(1)
 
     if provider == "real":
-        posts_provider = RealApifyProvider(settings.APIFY_API_TOKEN)
+        posts_provider = build_real_posts_provider(settings.APIFY_API_TOKEN, settings.APIFY_FALLBACK_API_TOKEN)
     else:
         posts_provider = MockApifyProvider()
     gateway = ApifyScraperGateway(posts_provider)

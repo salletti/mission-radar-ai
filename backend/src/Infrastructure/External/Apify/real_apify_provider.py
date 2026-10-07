@@ -6,6 +6,7 @@ import logging
 from apify_client import ApifyClient
 
 from src.Infrastructure.External.Apify.exceptions import (
+    ApifyQuotaExceededError,
     ApifyRequestError,
     ApifyTokenMissingError,
 )
@@ -14,6 +15,17 @@ from src.Infrastructure.External.Apify.posts_provider import PostsProvider
 logger = logging.getLogger(__name__)
 
 _ACTOR_ID = "harvestapi/linkedin-post-search"
+
+# 402 : limite d'usage du compte atteinte ; 429 : rate limit persistant après les retries
+# internes d'apify-client. Le message est aussi vérifié car c'est lui qu'on a observé en prod
+# ("Monthly usage hard limit exceeded", 2026-09).
+_QUOTA_STATUS_CODES = frozenset({402, 429})
+
+
+def _is_quota_error(exc: Exception) -> bool:
+    if getattr(exc, "status_code", None) in _QUOTA_STATUS_CODES:
+        return True
+    return "limit exceeded" in str(exc).lower()
 
 
 class RealApifyProvider(PostsProvider):
@@ -35,6 +47,8 @@ class RealApifyProvider(PostsProvider):
         except ApifyRequestError:
             raise
         except Exception as exc:
+            if _is_quota_error(exc):
+                raise ApifyQuotaExceededError(f"Quota Apify épuisé : {exc}") from exc
             raise ApifyRequestError(f"Erreur lors de l'appel Apify : {exc}") from exc
 
     def _call_apify(self, query: str, limit: int) -> list[dict]:

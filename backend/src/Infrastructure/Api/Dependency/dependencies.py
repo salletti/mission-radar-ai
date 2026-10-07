@@ -48,7 +48,7 @@ from src.Infrastructure.Persistence.Repository.user_profile_repository import Sq
 @lru_cache(maxsize=1)
 def _get_llm_gateway() -> LLMGateway:
     if settings.LLM_PROVIDER == "groq":
-        return GroqLLMGateway(api_key=settings.GROQ_API_KEY, tracer=get_langfuse_tracer())
+        return GroqLLMGateway(api_key=settings.GROQ_API_KEY, model=settings.GROQ_MODEL, tracer=get_langfuse_tracer())
     raise ValueError(f"Unknown LLM_PROVIDER: {settings.LLM_PROVIDER!r}")
 
 

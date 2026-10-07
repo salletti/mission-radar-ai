@@ -78,7 +78,7 @@ async def _run(post_id: UUID) -> None:
             sys.exit(1)
 
         use_case = AnalyzeRawPost(
-            llm=GroqLLMGateway(api_key=settings.GROQ_API_KEY, tracer=get_langfuse_tracer()),
+            llm=GroqLLMGateway(api_key=settings.GROQ_API_KEY, model=settings.GROQ_MODEL, tracer=get_langfuse_tracer()),
             mission_normalizer=MissionNormalizer(),
             mission_embedding_builder=MissionEmbeddingBuilder(),
             embedding_gateway=SentenceTransformerEmbeddingGateway(),

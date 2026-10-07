@@ -9,7 +9,7 @@ from src.Infrastructure.Config.database import CeleryAsyncSessionLocal as AsyncS
 from src.Infrastructure.Config.settings import settings
 from src.Infrastructure.External.Apify.apify_scraper_gateway import ApifyScraperGateway
 from src.Infrastructure.External.Apify.mock_apify_provider import MockApifyProvider
-from src.Infrastructure.External.Apify.real_apify_provider import RealApifyProvider
+from src.Infrastructure.External.Apify.fallback_posts_provider import build_real_posts_provider
 from src.Infrastructure.Persistence.Repository.raw_post_repository import SqlAlchemyRawPostRepository
 from src.Infrastructure.Persistence.Repository.search_query_raw_post_repository import SqlAlchemySearchQueryRawPostRepository
 from src.Infrastructure.Worker.celery_app import celery_app
@@ -35,7 +35,7 @@ def collect_posts(query: str, limit: int = 10, search_query_id: str = "") -> Non
 
 async def _collect(query: str, limit: int, search_query_id: str) -> dict:
     if settings.APIFY_PROVIDER == "real":
-        provider = RealApifyProvider(settings.APIFY_API_TOKEN)
+        provider = build_real_posts_provider(settings.APIFY_API_TOKEN, settings.APIFY_FALLBACK_API_TOKEN)
     else:
         provider = MockApifyProvider()
     gateway = ApifyScraperGateway(provider)

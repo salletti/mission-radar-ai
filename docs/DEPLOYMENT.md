@@ -54,6 +54,19 @@ via ce proxy nginx, donc le FastAPI backend n'a jamais besoin d'autoriser une or
 - **Provider LLM** : `LLM_PROVIDER=groq` en prod (décision explicite, malgré la mention Claude
   dans le README — Groq est déjà validé en dev et évite d'ajouter une clé Anthropic).
 - **`APIFY_PROVIDER=real`** (le mode `mock` reste réservé au dev/CI).
+- **`GROQ_MODEL`** (défaut `openai/gpt-oss-120b`) : Groq retire des modèles sans préavis
+  (`llama-3.3-70b-versatile` répondait 404 à partir du 2026-08-26, toutes les analyses échouaient
+  et les digests partaient vides). Vérifier la liste avec `GET https://api.groq.com/openai/v1/models`
+  et changer la variable dans Coolify si le modèle disparaît. Si toutes les analyses d'un run
+  échouent, le `PipelineRun` passe désormais en `FAILED` (plus de digest vide silencieux).
+- **Budget Apify** : `APIFY_MAX_POSTS_PER_QUERY` (défaut 20) plafonne les posts scrapés par query
+  et par run, et `DISPATCH_INTERVAL_HOURS` (défaut 24) fixe la fréquence. Le quota mensuel a été
+  dépassé du 2026-09-07 au 2026-09-25 avec un run toutes les 12h × 2 queries × 50 posts, alors que
+  seuls 1 à 3 posts étaient nouveaux à chaque run.
+- **Compte Apify de secours** : `APIFY_FALLBACK_API_TOKEN` (optionnel) — si le compte principal
+  répond quota épuisé (HTTP 402/429 ou « limit exceeded »), la collecte bascule sur ce second compte
+  pour le reste du run (log `Quota Apify épuisé sur le compte #1 — bascule sur le compte #2`). Chaque
+  run repart du compte principal, ce qui le réutilise automatiquement après la remise à zéro mensuelle.
 
 ## Prérequis externes à préparer avant de déployer
 

@@ -66,7 +66,7 @@ def _parse_availability(value: str) -> datetime:
 
 
 class GroqLLMGateway(LLMGateway):
-    """LLM gateway backed by Groq API (llama-3.3-70b-versatile by default).
+    """LLM gateway backed by Groq API (openai/gpt-oss-120b by default, overridden by settings.GROQ_MODEL).
 
     The _client parameter accepts an injected fake for unit tests, avoiding
     any real network calls — same injection pattern as Python's stdlib adapters.
@@ -77,7 +77,7 @@ class GroqLLMGateway(LLMGateway):
     def __init__(
         self,
         api_key: str,
-        model: str = "llama-3.3-70b-versatile",
+        model: str = "openai/gpt-oss-120b",
         _client: Any = None,
         tracer: LLMTracer | None = None,
         strict_json_schema: bool = False,

@@ -22,7 +22,7 @@ from src.Infrastructure.Config.database import CeleryAsyncSessionLocal as AsyncS
 from src.Infrastructure.Config.settings import settings
 from src.Infrastructure.External.Apify.apify_scraper_gateway import ApifyScraperGateway
 from src.Infrastructure.External.Apify.mock_apify_provider import MockApifyProvider
-from src.Infrastructure.External.Apify.real_apify_provider import RealApifyProvider
+from src.Infrastructure.External.Apify.fallback_posts_provider import build_real_posts_provider
 from src.Infrastructure.External.Embedding.sentence_transformer_embedding_gateway import SentenceTransformerEmbeddingGateway
 from src.Infrastructure.External.LLM.groq_llm_gateway import GroqLLMGateway
 from src.Infrastructure.External.Mailer.jinja_email_template_renderer import JinjaEmailTemplateRenderer
@@ -148,7 +148,7 @@ async def _run_refresh(task, pipeline_run_id_str: str, user_id_str: str) -> None
 
 async def _collect_step(pipeline_run_id: UUID, user_id: UUID) -> list[UUID]:
     if settings.APIFY_PROVIDER == "real":
-        provider = RealApifyProvider(settings.APIFY_API_TOKEN)
+        provider = build_real_posts_provider(settings.APIFY_API_TOKEN, settings.APIFY_FALLBACK_API_TOKEN)
     else:
         provider = MockApifyProvider()
     gateway = ApifyScraperGateway(provider)
@@ -164,7 +164,7 @@ async def _collect_step(pipeline_run_id: UUID, user_id: UUID) -> list[UUID]:
 
         for query in queries:
             posts = await CollectRawPosts(gateway).execute(
-                CollectPostsCommand(query=query.query, limit=query.limit)
+                CollectPostsCommand(query=query.query, limit=min(query.limit, settings.APIFY_MAX_POSTS_PER_QUERY))
             )
             result = await SaveRawPosts(raw_repo, link_repo).execute(posts, query.id)
             new_post_ids.extend(result.new_post_ids)
@@ -185,6 +185,7 @@ async def _collect_step(pipeline_run_id: UUID, user_id: UUID) -> list[UUID]:
 
 
 async def _analyze_step(pipeline_run_id: UUID, new_post_ids: list[UUID]) -> None:
+    failures: list[str] = []
     for post_id in new_post_ids:
         async with AsyncSessionLocal() as session:
             try:
@@ -194,7 +195,7 @@ async def _analyze_step(pipeline_run_id: UUID, new_post_ids: list[UUID]) -> None
                     logger.warning("run_mission_refresh: RawPost %s not found — skipping", post_id)
                     continue
 
-                llm = GroqLLMGateway(settings.GROQ_API_KEY, tracer=get_langfuse_tracer())
+                llm = GroqLLMGateway(settings.GROQ_API_KEY, model=settings.GROQ_MODEL, tracer=get_langfuse_tracer())
                 analyzed_repo = SqlAlchemyAnalyzedPostRepository(session)
                 use_case = AnalyzeRawPost(
                     llm=llm,
@@ -212,7 +213,13 @@ async def _analyze_step(pipeline_run_id: UUID, new_post_ids: list[UUID]) -> None
                     result.status,
                 )
             except Exception as e:
+                failures.append(str(e))
                 logger.warning("run_mission_refresh: analyze skipped raw_post=%s error=%s", post_id, e)
+
+    # Un échec isolé est toléré, mais si toutes les analyses échouent (modèle LLM retiré,
+    # clé invalide…) le run doit passer FAILED plutôt qu'envoyer un digest vide en silence.
+    if failures and len(failures) == len(new_post_ids):
+        raise RuntimeError(f"all {len(failures)} post analyses failed — last error: {failures[-1]}")
 
     async with AsyncSessionLocal() as session:
         run_repo = SqlAlchemyPipelineRunRepository(session)

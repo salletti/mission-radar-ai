@@ -329,3 +329,96 @@ async def test_digest_error_marks_pipeline_failed() -> None:
 
     assert run_running.status == PipelineStatus.FAILED
     assert "resend down" in run_running.error_message
+
+
+# ---------------------------------------------------------------------------
+# _analyze_step — toutes les analyses en échec → exception (run FAILED)
+# ---------------------------------------------------------------------------
+
+
+def _patch_analyze_deps(analyze_side_effect) -> tuple:
+    mock_session_local, _ = _make_session_ctx()
+    raw_repo = MagicMock()
+    raw_repo.get_by_id = AsyncMock(return_value=MagicMock())
+    run_repo = MagicMock()
+    run_repo.get_by_id = AsyncMock(return_value=_make_run(status=PipelineStatus.RUNNING))
+    run_repo.update = AsyncMock()
+    use_case = MagicMock()
+    use_case.execute = AsyncMock(side_effect=analyze_side_effect)
+    return (
+        patch(f"{_MODULE}.AsyncSessionLocal", mock_session_local),
+        patch(f"{_MODULE}.SqlAlchemyRawPostRepository", return_value=raw_repo),
+        patch(f"{_MODULE}.SqlAlchemyAnalyzedPostRepository"),
+        patch(f"{_MODULE}.SqlAlchemyPipelineRunRepository", return_value=run_repo),
+        patch(f"{_MODULE}.GroqLLMGateway"),
+        patch(f"{_MODULE}._get_embedding_gateway"),
+        patch(f"{_MODULE}.AnalyzeRawPost", return_value=use_case),
+    )
+
+
+@pytest.mark.asyncio
+async def test_analyze_step_raises_when_every_analysis_fails() -> None:
+    """Modèle LLM retiré (404) sur tous les posts → l'étape lève au lieu d'avancer en silence."""
+    from src.Infrastructure.Worker.tasks.run_mission_refresh_task import _analyze_step
+
+    patches = _patch_analyze_deps(RuntimeError("Error code: 404 - model does not exist"))
+    with patches[0], patches[1], patches[2], patches[3], patches[4], patches[5], patches[6]:
+        with pytest.raises(RuntimeError, match="all 2 post analyses failed.*404"):
+            await _analyze_step(uuid4(), [uuid4(), uuid4()])
+
+
+@pytest.mark.asyncio
+async def test_analyze_step_tolerates_partial_failure() -> None:
+    """Un seul post en échec sur deux → l'étape continue normalement."""
+    from src.Infrastructure.Worker.tasks.run_mission_refresh_task import _analyze_step
+
+    patches = _patch_analyze_deps([RuntimeError("summary cannot be empty"), MagicMock(status="analyzed")])
+    with patches[0], patches[1], patches[2], patches[3], patches[4], patches[5], patches[6]:
+        await _analyze_step(uuid4(), [uuid4(), uuid4()])
+
+
+@pytest.mark.asyncio
+async def test_analyze_step_without_new_posts_does_not_raise() -> None:
+    """Aucun nouveau post → rien à analyser, pas d'échec."""
+    from src.Infrastructure.Worker.tasks.run_mission_refresh_task import _analyze_step
+
+    patches = _patch_analyze_deps(RuntimeError("never called"))
+    with patches[0], patches[1], patches[2], patches[3], patches[4], patches[5], patches[6]:
+        await _analyze_step(uuid4(), [])
+
+
+# ---------------------------------------------------------------------------
+# _collect_step — plafond APIFY_MAX_POSTS_PER_QUERY
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(("query_limit", "cap", "expected"), [(50, 20, 20), (10, 20, 10)])
+async def test_collect_step_caps_limit_sent_to_apify(query_limit: int, cap: int, expected: int) -> None:
+    from src.Infrastructure.Worker.tasks.run_mission_refresh_task import _collect_step
+
+    mock_session_local, _ = _make_session_ctx()
+    sq_repo = MagicMock()
+    sq_repo.get_by_profile = AsyncMock(return_value=[MagicMock(query="python freelance", limit=query_limit)])
+    run_repo = MagicMock()
+    run_repo.get_by_id = AsyncMock(return_value=_make_run(status=PipelineStatus.RUNNING))
+    run_repo.update = AsyncMock()
+    collect = MagicMock()
+    collect.execute = AsyncMock(return_value=[])
+    save = MagicMock()
+    save.execute = AsyncMock(return_value=MagicMock(new_post_ids=(), saved=0, skipped=0))
+
+    with (
+        patch(f"{_MODULE}.AsyncSessionLocal", mock_session_local),
+        patch(f"{_MODULE}.settings.APIFY_PROVIDER", "mock"),
+        patch(f"{_MODULE}.settings.APIFY_MAX_POSTS_PER_QUERY", cap),
+        patch(f"{_MODULE}.SqlAlchemySearchQueryRepository", return_value=sq_repo),
+        patch(f"{_MODULE}.SqlAlchemyRawPostRepository"),
+        patch(f"{_MODULE}.SqlAlchemySearchQueryRawPostRepository"),
+        patch(f"{_MODULE}.SqlAlchemyPipelineRunRepository", return_value=run_repo),
+        patch(f"{_MODULE}.CollectRawPosts", return_value=collect),
+        patch(f"{_MODULE}.SaveRawPosts", return_value=save),
+    ):
+        await _collect_step(uuid4(), uuid4())
+
+    assert collect.execute.await_args.args[0].limit == expected

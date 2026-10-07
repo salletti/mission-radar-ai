@@ -50,7 +50,7 @@ async def _analyze(raw_post_id: str) -> dict:
         if raw_post is None:
             raise ValueError(f"RawPost {raw_post_id} not found")
 
-        llm = GroqLLMGateway(settings.GROQ_API_KEY, tracer=get_langfuse_tracer())
+        llm = GroqLLMGateway(settings.GROQ_API_KEY, model=settings.GROQ_MODEL, tracer=get_langfuse_tracer())
         analyzed_post_repo = SqlAlchemyAnalyzedPostRepository(session)
         use_case = AnalyzeRawPost(
             llm=llm,

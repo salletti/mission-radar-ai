@@ -3,6 +3,7 @@ import pytest
 from unittest.mock import MagicMock, patch
 
 from src.Infrastructure.External.Apify.exceptions import (
+    ApifyQuotaExceededError,
     ApifyRequestError,
     ApifyTokenMissingError,
 )
@@ -29,6 +30,14 @@ def _make_apify_client_mock(items: list[dict] | None = None, run: MagicMock | No
     client_mock.dataset.return_value = dataset_mock
 
     return client_mock
+
+
+class _FakeApifyApiError(Exception):
+    """Imite apify_client.errors.ApifyApiError (status_code + message) sans réponse HTTP réelle."""
+
+    def __init__(self, status_code: int, message: str) -> None:
+        super().__init__(message)
+        self.status_code = status_code
 
 
 class TestRealApifyProviderInit:
@@ -100,3 +109,33 @@ class TestRealApifyProviderSearchPosts:
             result = await provider.search_posts("python freelance", 10)
 
         assert result == []
+
+
+class TestRealApifyProviderQuota:
+    @pytest.mark.parametrize(
+        "error",
+        [
+            _FakeApifyApiError(402, "payment required"),
+            _FakeApifyApiError(429, "rate limit"),
+            RuntimeError("Monthly usage hard limit exceeded"),
+        ],
+    )
+    async def test_quota_epuise_leve_apify_quota_exceeded_error(self, error):
+        client_mock = MagicMock()
+        client_mock.actor.return_value.call.side_effect = error
+
+        with patch(_ACTOR_PATH, return_value=client_mock):
+            provider = RealApifyProvider(_VALID_TOKEN)
+            with pytest.raises(ApifyQuotaExceededError):
+                await provider.search_posts("python freelance", 10)
+
+    async def test_erreur_acteur_n_est_pas_une_erreur_de_quota(self):
+        client_mock = MagicMock()
+        client_mock.actor.return_value.call.side_effect = RuntimeError("Apify actor failed")
+
+        with patch(_ACTOR_PATH, return_value=client_mock):
+            provider = RealApifyProvider(_VALID_TOKEN)
+            with pytest.raises(ApifyRequestError) as exc_info:
+                await provider.search_posts("python freelance", 10)
+
+        assert not isinstance(exc_info.value, ApifyQuotaExceededError)

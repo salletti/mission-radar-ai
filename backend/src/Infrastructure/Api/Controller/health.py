@@ -14,7 +14,10 @@ def root():
     return {"name": "mission-radar-ai", "version": "0.1.0"}
 
 
+# /health : healthcheck Docker interne (curl 127.0.0.1:8000/health dans docker-compose.prod.yml).
+# /api/health : même route exposée publiquement — nginx ne relaie que /api/* vers le backend.
 @router.get("/health")
+@router.get("/api/health")
 async def health(db: AsyncSession = Depends(get_db_session)):
     try:
         await db.execute(text("SELECT 1"))
